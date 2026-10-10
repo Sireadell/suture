@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KBB9J409096N62BZ6AW98Y",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "evidence/entire/CHECKPOINTS.md",
+    "evidence/entire/ENTIRE_NOTES.md",
+    "evidence/entire/WHERE_THE_BUG_CAME_FROM.md",
+    "evidence/entire/raw/activity.txt",
+    "evidence/entire/raw/agent_list.txt",
+    "evidence/entire/raw/blame_clerk_json.txt",
+    "evidence/entire/raw/blame_fix.txt",
+    "evidence/entire/raw/checkpoint_explain.txt",
+    "evidence/entire/raw/checkpoint_list.txt",
+    "evidence/entire/raw/checkpoint_tokens.txt",
+    "evidence/entire/raw/dispatch.txt",
+    "evidence/entire/raw/doctor.txt",
+    "evidence/entire/raw/experts.txt",
+    "evidence/entire/raw/recap.txt",
+    "evidence/entire/raw/repo_list.txt",
+    "evidence/entire/raw/review_help.txt",
+    "evidence/entire/raw/search_clerk.txt",
+    "evidence/entire/raw/search_code.txt",
+    "evidence/entire/raw/search_json_types.txt",
+    "evidence/entire/raw/session_help.txt",
+    "evidence/entire/raw/session_list.txt",
+    "evidence/entire/raw/tokens.txt",
+    "evidence/entire/raw/why_clerk.txt",
+    "evidence/entire/raw/why_json_linked_line.txt"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 8,
+    "cache_creation_tokens": 7490,
+    "cache_read_tokens": 668538,
+    "output_tokens": 1924,
+    "api_call_count": 4
+  }
+}
