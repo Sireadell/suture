@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KD66EZXM0TKDGMF8MQ3Z73",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "evidence/cfo/1_guess_plan_top_snapshot.jpg",
+    "evidence/cfo/2_guess_pricing_rules_snapshot.jpg",
+    "evidence/cfo/3_real_plan_top.jpg",
+    "evidence/cfo/4_real_pricing_rules.jpg",
+    "evidence/cfo/5_real_ari_summary.jpg",
+    "evidence/cfo/CFO_PLAN.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 54,
+    "cache_creation_tokens": 37366,
+    "cache_read_tokens": 6886767,
+    "output_tokens": 10086,
+    "api_call_count": 27
+  }
+}
