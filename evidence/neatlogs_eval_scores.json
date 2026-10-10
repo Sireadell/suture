@@ -1,0 +1,176 @@
+{
+  "after": [
+    {
+      "case": "valid_refund_A1001",
+      "trace": "a09a9d366b1ceffd9537f46948670403",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_pending_A1002",
+      "trace": "b7c085885a428b2c7bb62536d9ff164a",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_ineligible_A1003",
+      "trace": "59c614eb00e34d005ef8c72e635da26f",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_ZZ-FAKE-3",
+      "trace": "435fc96f563f3f1432f894fbb8e7aef1",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_A9999",
+      "trace": "cf53e4e9c61420e689ceabbddcfa3fe1",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "malformed_json",
+      "trace": "65cc8b04df341d719fbb32002dea1970",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "not_json_text",
+      "trace": "1b1afb9657b990af9de3c61ed1bba2e3",
+      "status": "ERROR",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "json_array_body",
+      "trace": "686a9a135f02d114a1e12d48fe637ec1",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    }
+  ],
+  "after_dup": [
+    {
+      "case": "valid_refund_A1001",
+      "trace": "641e9d9547b66a3792aa947fa0db5b31",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_pending_A1002",
+      "trace": "569bd5ce92d868962cb02ca970c063cb",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_ineligible_A1003",
+      "trace": "8ae4c007e605cf23d1d89a3c35c8fb79",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_ZZ-FAKE-3",
+      "trace": "dcdc1d0fbd8f2d2c2dd9be9cc4b48ca3",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_A9999",
+      "trace": "00da703526670044497f9b0cb7469003",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "malformed_json",
+      "trace": "90dc690e8354c6ef8a2031b6651943c7",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "not_json_text",
+      "trace": "0510bd4400452d932e7849f03719896c",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "json_array_body",
+      "trace": "bf6db54dbdc0d066a090daf43f854a8f",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    }
+  ],
+  "before": [
+    {
+      "case": "valid_refund_A1001",
+      "trace": "d3d65878fc1fa86ee3aa59f16ea3bd93",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_pending_A1002",
+      "trace": "2b24f9a894f5477c25595df3611689e4",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "valid_ineligible_A1003",
+      "trace": "30b81f6ff7904f4f2e09a2907cd691e2",
+      "status": "OK",
+      "verdict": "Yes",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_ZZ-FAKE-3",
+      "trace": "fb5fc3368cba111d98c241e310442f7b",
+      "status": "OK",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "unknown_order_A9999",
+      "trace": "8be1d2837ecf439c9395cee8851c9175",
+      "status": "OK",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "malformed_json",
+      "trace": "f1b6f6bf04c3a79b7f9142b4b002784d",
+      "status": "OK",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "not_json_text",
+      "trace": "488718c19dd5b5da6cfb12599d2f93a1",
+      "status": "OK",
+      "verdict": "No",
+      "reason": null
+    },
+    {
+      "case": "json_array_body",
+      "trace": "e2cfd291b4b10ae06b2c8f5959c5b48e",
+      "status": "ERROR",
+      "verdict": "No",
+      "reason": null
+    }
+  ]
+}
