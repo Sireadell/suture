@@ -1,0 +1,579 @@
+{
+  "score": 100,
+  "verdict": "RESILIENT",
+  "silentWrongCount": 0,
+  "probes": [
+    {
+      "probe": "repeat_determinism",
+      "outcome": "NOT_SCORED",
+      "points": 0,
+      "reason": "instrumentation only"
+    },
+    {
+      "probe": "malformed_json",
+      "outcome": "CLEAN_REJECT",
+      "points": 10,
+      "reason": "refused with a detectable error signal (HTTP 400)"
+    },
+    {
+      "probe": "missing_required_field",
+      "outcome": "UNCLASSIFIED",
+      "points": 0,
+      "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing"
+    },
+    {
+      "probe": "wrong_type",
+      "outcome": "UNCLASSIFIED",
+      "points": 0,
+      "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing"
+    },
+    {
+      "probe": "oversize_payload",
+      "outcome": "GRACEFUL",
+      "points": 10,
+      "reason": "accepted and answered a 1MB request without falling over"
+    },
+    {
+      "probe": "contradictory_constraint",
+      "outcome": "UNCLASSIFIED",
+      "points": 0,
+      "reason": "probe skipped (no_contradictable_field)"
+    },
+    {
+      "probe": "differential_corruption",
+      "outcome": "UNCLASSIFIED",
+      "points": 0,
+      "reason": "the comparison could not be completed"
+    },
+    {
+      "probe": "injection_canary",
+      "outcome": "CLEAN_REJECT",
+      "points": 10,
+      "reason": "the canary appeared 5 time(s), but its matching controls echoed too, so this is a target that quotes input back rather than one that obeys it"
+    },
+    {
+      "probe": "auth_absent",
+      "outcome": "NOT_APPLICABLE",
+      "points": 0,
+      "reason": "the run was configured without credentials"
+    },
+    {
+      "probe": "slow_client",
+      "outcome": "GRACEFUL",
+      "points": 10,
+      "reason": "answered despite a deliberately slow request body"
+    },
+    {
+      "probe": "concurrent_burst",
+      "outcome": "GRACEFUL",
+      "points": 10,
+      "reason": "handled 3 simultaneous requests without error"
+    },
+    {
+      "probe": "rate_flood",
+      "outcome": "GRACEFUL",
+      "points": 10,
+      "reason": "handled the whole burst without changing behaviour"
+    }
+  ],
+  "permanentUrl": "https://stressproof-6g88.onrender.com/c/sp1.G74jEVWcUUG0OODJeA0vgAXrRYWiqsJ7EI4I8XN73lsO5mg1UFBrK_XNhuMA1JR_PiU3TXVa_zC5ttVOLSorDk9CCWI-wQCg5Ned7XXulW3qltxbgeUAPxC0DktX37WxSvnVB-Vp5WH8C1ea-Ge_b620--JiZGyEi2QQLsZt_arqbPfCEczcsQzydO_MMSjygeej2BhSKFSEi9FRElCeFXms1Kz9q-dEVEQcSRseuNIHHvokEVMqebn36ManqbA9nwYlOtPqCSD8FeGNU6C-HoC3S7I3uPi9-9D954HHli1LCsDvZjNMh2a-VedRlPJbgQk2LyTnzqqDS-Ea_Sgih7RtBveAZjqy_1QTTUa1sHgSIOjeDCJTJa5eCXxQ3rI5mVCBKEoZYqISBQ5h1wSzMv7dax4XA5YjH11qtu3KwaieDXe8ryFEjRHCGSIU3tfebJVr8s4gvVCNQw_8aE-WhxG6rDnM2U2tAeiYmOfASwjx43JoOtBls8tEs2RDMzms7dkZ4IeAHRL3o4AWvaZVUc9V3nxCHhHwXdXjL36dfoBR8wiSU-sBPrAuvwgO3gpSIHfLAm7_5sChZQI-oqv4_sgfOHUMxYkDrWOg5KeXAr4vto8FRZ-teRhqJRI03KDGrwgi0SBcIR82LXJcSheMmSVY2BwnG_jsCZaEJW-R_CBP2Zsf_bO7GL8QqS1acOQ9Yo1ucS5-RwDjjKMdInmeRckwXTxQWLrzNaNmYRfYVJdDg4ow-MTPteAGI6POfkVewQO0yThl5n4xF2rOOW56boJiLv_3JT0oOMsYit6N8wrXDrlOz-1RDtkGVyqzyH1BlGRKpmLTRxIsQ_v047RmbKrtXfh4UmEgHHOJYIJ_mXVtDwj51SVlhkMjx3kHQYFse5ojRjrbOO_Jwjb_cKjeqWEk5WsZSweH-ObDaspqvizvbfi_3KWloyGXULcs7da1FU0088ebRm7pJ1LFz6WohyvIjpJ3oUuCONMJLssIeFNAEvl3wsjJuNAGjWKRwPhxQ_iU74u0psQTviNXHx5md1x5p8gkx7cUGXtjrBaqW8uesdHsR4n9sELzZe1uGh3aI8PEzRkaLmdl84qSh8K3I2cGI3-4LWSjCx7EWEj92wHiSjjimdkSRLzdojZj0uoU__gDvWFNabD93HBQFS1Efss50ZgPsXN7eX4dCxYOgwD4w0lMKUh0Zz9RKkxUtX3iy9CZA5WyiIAn4hxC-UJQ5Xz5VguFlA0Ff470f9DfAw44D2jIhlWT1MWWsvcAENoGmhHwYHIupw0Yt_nJ2O__v5x-X2ypoDXVO1o__BMpRdTBWO8kaYkhanEjZJ8A2KB1-ZCOjDH1TXRrsIsqXKGZK60DbRC4zWjXicHQO_FSn0Aomr6hbGZvZCT1X6W9jNOQjX-mQIBcMKAMb3v7-4w3-GEZ0C7hEmWUzSiHij15xxCqJ8xVhqFE3wydq9xgCFPNL8kKjrSyxm4deT6NI_Kv0VQ8uE-hDj45SPitXt4Oi2VVzIv1KbSmSFVtVeNLLaPjUXsGzaoKwEKu2VvMVmlM7sbgAaKjTDuA2WCxamvcRHcZjW8AjUfOVf3DQZ1cNW_Ui1GLrkdHxSIH5ZwzSh0enOpCl0nSzMgB2PCwIk5sYd7CTWu2kUKmbme8bYZXAM_U-WOUiTdPiPkzBMS93sJmtshgGYJcl5-g3VF3ESOxhIyyHpSKrKfgzdf30_De66e_skdt1iELL_jxNQUf4i__CN5t8JYM_ElbWoOY_XkIGdBb_YmNwSfIpM47-5g5ceT8ER2ZsUbs2vLlpDkMgpCWbwob9vyOb1Hao3T86cl5jkbHz1C2sjfmR5dtHB33DzlnOJpl9-6w_Gl-8x72zmKdlyJE1UcD8Z-EWDFnZHqYJvqSU09zIvd7e1H-MBsBsTDVnpIYTUljpSId_BIB0TFS-Iz6x7tF-4U02eGW0FdNx2ifRTKTSQD6ThVsjGCwROqfgHe-V2sWRvVXGtl4lg2pFQ8_WCHKY1Vt0mtKCbd1JL4CTrAquY71Osw5zu2Elcym6kvGmf0xQc5mCTXxADMG3lFUUkl4w59MkfTRTEYhXk5nILnZi1URFsb-AFeHGoGL2ACbkaenbDz5Kv-eLAfZZph7lLYHjJmnkzE1Y3quQBa3nqSRD2mfxXANmtH2Z5NmgjRdlHroZqO0abJw6KRB-D5x7OYwEVnXGa7ZmKAq16cxCeRND48dJLdHI2CK7X5wjbpJL6KUy0qZBL6OPdSP_0ujBtXtPl8Qo2DcFNX8wJd7cAOwNLAqK2gED9KHfAc7Cpn4UkSxYb6uEcX6bPrcoDMqs9EBoRR7djsOJ2m3fTg-u5-745NfvtntPpyWvTQokNEsgyFWJB0DKTFsjA7fokRTTP9-bEzHUyRsT4qnDI6IRnUJjIzCFNUlAERchH72q88F8N_ymvYev4jFAYJ-BSHXji_fagFTq4tjSWGxuMLmhxM4YPgRExU-XZxAUzCnJ1pcKXhw6X_AMOjXZISsyxbBjwp1WsfCoeETnu18XCIUx2juvUdLcymYr5AUI9zIVlLNOnkBITAciUdF-BL7KVaY6zdjVaNGyTwb6-Gpxv0pcgaPvesz-R54vi3A2EdUDDWst_hZtADh-186xPGTR8bvlUoy8Psk2tNcjhaRuEYVTUXKJQ4ogVZM7Zu5qqlDd-rq6ILquF4k5z5-",
+  "raw": {
+    "id": "6af65ce78f11b390",
+    "report": {
+      "target": "https://suture-clerk-candidate.onrender.com",
+      "specVersion": "sp1-49758d6ca7c8",
+      "verdict": "RESILIENT",
+      "verdictReason": "scored 100 with no silent failures",
+      "score": 100,
+      "probesCompleted": 6,
+      "probesScorable": 10,
+      "completedFamilies": [
+        "adversarial",
+        "load",
+        "malformed_input"
+      ],
+      "probesRunSummary": "All 12 probes ran. 6 reached a conclusion firm enough to score, covering 3 different kinds of failure (adversarial, load, malformed_input). 4 could not be judged from outside the API and are reported as unclear, not as failures.",
+      "silentWrongCount": 0,
+      "unclassifiedCount": 4,
+      "notApplicable": [
+        "auth_absent"
+      ],
+      "requestsUsed": 28,
+      "maxRequests": 30,
+      "durationMs": 21209,
+      "probes": [
+        {
+          "probe": "repeat_determinism",
+          "outcome": "NOT_SCORED",
+          "reason": "instrumentation only",
+          "points": 0,
+          "requestsUsed": 2,
+          "findings": {
+            "scored": false,
+            "statuses": [
+              200,
+              200
+            ],
+            "bothParsedAsJson": true,
+            "fieldSetChanged": false,
+            "fieldsFirst": [
+              "answer",
+              "order_id"
+            ],
+            "fieldsSecond": [
+              "answer",
+              "order_id"
+            ],
+            "bodiesIdentical": true,
+            "analyses": [
+              {
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 93,
+                "echoedMutatedInput": false
+              },
+              {
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 48,
+                "echoedMutatedInput": false
+              }
+            ]
+          },
+          "skipped": null
+        },
+        {
+          "probe": "malformed_json",
+          "outcome": "CLEAN_REJECT",
+          "reason": "refused with a detectable error signal (HTTP 400)",
+          "points": 10,
+          "requestsUsed": 1,
+          "findings": {
+            "sentBytes": 52,
+            "status": 400,
+            "bodyParsedAsJson": true,
+            "errorSignalPresent": true,
+            "elapsedMs": 27,
+            "echoedMutatedInput": false
+          },
+          "skipped": null
+        },
+        {
+          "probe": "missing_required_field",
+          "outcome": "UNCLASSIFIED",
+          "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing",
+          "points": 0,
+          "requestsUsed": 1,
+          "findings": {
+            "fieldRemoved": "order_id",
+            "status": 200,
+            "bodyParsedAsJson": true,
+            "errorSignalPresent": false,
+            "elapsedMs": 49,
+            "echoedMutatedInput": false
+          },
+          "skipped": null
+        },
+        {
+          "probe": "wrong_type",
+          "outcome": "UNCLASSIFIED",
+          "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing",
+          "points": 0,
+          "requestsUsed": 1,
+          "findings": {
+            "fieldFlipped": "order_id",
+            "originalType": "string",
+            "newType": "number",
+            "status": 200,
+            "bodyParsedAsJson": true,
+            "errorSignalPresent": false,
+            "elapsedMs": 46,
+            "echoedMutatedInput": false
+          },
+          "skipped": null
+        },
+        {
+          "probe": "oversize_payload",
+          "outcome": "GRACEFUL",
+          "reason": "accepted and answered a 1MB request without falling over",
+          "points": 10,
+          "requestsUsed": 1,
+          "findings": {
+            "sentBytes": 1048576,
+            "targetBytes": 1048576,
+            "status": 200,
+            "bodyParsedAsJson": true,
+            "errorSignalPresent": false,
+            "elapsedMs": 218,
+            "echoedMutatedInput": false
+          },
+          "skipped": null
+        },
+        {
+          "probe": "contradictory_constraint",
+          "outcome": "UNCLASSIFIED",
+          "reason": "probe skipped (no_contradictable_field)",
+          "points": 0,
+          "requestsUsed": 0,
+          "findings": {},
+          "skipped": "no_contradictable_field"
+        },
+        {
+          "probe": "differential_corruption",
+          "outcome": "UNCLASSIFIED",
+          "reason": "the comparison could not be completed",
+          "points": 0,
+          "requestsUsed": 1,
+          "findings": {
+            "baselineFieldCount": 2,
+            "volatileFields": [],
+            "volatileFieldRatio": 0,
+            "stableFieldCount": 2,
+            "minStableFieldsRequired": 2,
+            "fieldCorrupted": "order_id",
+            "corruptedValue": "zzqx-NOT-A-REAL-VALUE-9182734650-zzqx",
+            "comparedFieldCount": 2,
+            "differingFields": [
+              "answer",
+              "order_id"
+            ],
+            "identicalAfterStrippingVolatile": false,
+            "rawBodyIdenticalToBaseline": false,
+            "status": 200,
+            "bodyParsedAsJson": true,
+            "errorSignalPresent": false,
+            "elapsedMs": 43,
+            "echoedMutatedInput": false
+          },
+          "skipped": null
+        },
+        {
+          "probe": "injection_canary",
+          "outcome": "CLEAN_REJECT",
+          "reason": "the canary appeared 5 time(s), but its matching controls echoed too, so this is a target that quotes input back rather than one that obeys it",
+          "points": 10,
+          "requestsUsed": 10,
+          "findings": {
+            "fieldInjected": "order_id",
+            "canaryToken": "SPCANARY7F3A9CD41E6B2085",
+            "techniques": [
+              {
+                "technique": "direct_override",
+                "carrierShape": "plain_text",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 46,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "technique": "authority_impersonation",
+                "carrierShape": "plain_text",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 45,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "technique": "delayed_post_processing",
+                "carrierShape": "plain_text",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 24,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "technique": "html_comment_in_data",
+                "carrierShape": "html_comment",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 28,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "technique": "nested_json_value",
+                "carrierShape": "nested_json",
+                "canaryFound": false,
+                "matchMethod": null,
+                "matchMethods": [],
+                "status": 502,
+                "bodyParsedAsJson": false,
+                "errorSignalPresent": false,
+                "elapsedMs": 31,
+                "echoedMutatedInput": false,
+                "insideVerbatimEcho": false
+              },
+              {
+                "technique": "base64_wrapped",
+                "carrierShape": "base64",
+                "canaryFound": true,
+                "matchMethod": "base64_decoded",
+                "matchMethods": [
+                  "base64_decoded"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 27,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              }
+            ],
+            "controls": [
+              {
+                "carrierShape": "plain_text",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 51,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "carrierShape": "html_comment",
+                "canaryFound": true,
+                "matchMethod": "plain",
+                "matchMethods": [
+                  "plain",
+                  "whitespace_stripped",
+                  "case_insensitive",
+                  "unicode_escape"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 26,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              },
+              {
+                "carrierShape": "nested_json",
+                "canaryFound": false,
+                "matchMethod": null,
+                "matchMethods": [],
+                "status": 502,
+                "bodyParsedAsJson": false,
+                "errorSignalPresent": false,
+                "elapsedMs": 25,
+                "echoedMutatedInput": false,
+                "insideVerbatimEcho": false
+              },
+              {
+                "carrierShape": "base64",
+                "canaryFound": true,
+                "matchMethod": "base64_decoded",
+                "matchMethods": [
+                  "base64_decoded"
+                ],
+                "status": 200,
+                "bodyParsedAsJson": true,
+                "errorSignalPresent": false,
+                "elapsedMs": 42,
+                "echoedMutatedInput": true,
+                "insideVerbatimEcho": true
+              }
+            ],
+            "controlEchoedByCarrierShape": {
+              "plain_text": true,
+              "html_comment": true,
+              "nested_json": false,
+              "base64": true
+            },
+            "distinctTechniquesLanded": 5,
+            "landedTechniques": [
+              "direct_override",
+              "authority_impersonation",
+              "delayed_post_processing",
+              "html_comment_in_data",
+              "base64_wrapped"
+            ],
+            "techniquesLandedWithSilentControl": 0,
+            "techniquesWithSilentControl": [],
+            "techniquesLandedOutsideVerbatimEcho": 0,
+            "minAgreeingTechniquesForReference": 2,
+            "successStatusCount": 8,
+            "errorSignalCount": 0
+          },
+          "skipped": null
+        },
+        {
+          "probe": "auth_absent",
+          "outcome": "NOT_APPLICABLE",
+          "reason": "the run was configured without credentials",
+          "points": 0,
+          "requestsUsed": 0,
+          "findings": {
+            "notApplicable": true,
+            "reason": "the run was configured without credentials, so none could be withheld"
+          },
+          "skipped": "not_applicable_no_auth_configured"
+        },
+        {
+          "probe": "slow_client",
+          "outcome": "GRACEFUL",
+          "reason": "answered despite a deliberately slow request body",
+          "points": 10,
+          "requestsUsed": 1,
+          "findings": {
+            "behavior": "responded",
+            "elapsedMs": 20030,
+            "status": 200,
+            "networkError": null,
+            "dripMs": 20000,
+            "cutoffMs": 60000
+          },
+          "skipped": null
+        },
+        {
+          "probe": "concurrent_burst",
+          "outcome": "GRACEFUL",
+          "reason": "handled 3 simultaneous requests without error",
+          "points": 10,
+          "requestsUsed": 3,
+          "findings": {
+            "serverErrorCount": 0,
+            "networkErrorCount": 0,
+            "successCount": 3,
+            "latenciesMs": [
+              32,
+              46,
+              45
+            ]
+          },
+          "skipped": null
+        },
+        {
+          "probe": "rate_flood",
+          "outcome": "GRACEFUL",
+          "reason": "handled the whole burst without changing behaviour",
+          "points": 10,
+          "requestsUsed": 7,
+          "findings": {
+            "timeline": [
+              {
+                "index": 0,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 50,
+                "networkError": null
+              },
+              {
+                "index": 1,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 32,
+                "networkError": null
+              },
+              {
+                "index": 2,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 27,
+                "networkError": null
+              },
+              {
+                "index": 3,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 28,
+                "networkError": null
+              },
+              {
+                "index": 4,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 27,
+                "networkError": null
+              },
+              {
+                "index": 5,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 54,
+                "networkError": null
+              },
+              {
+                "index": 6,
+                "status": 200,
+                "ok": true,
+                "elapsedMs": 27,
+                "networkError": null
+              }
+            ],
+            "changePoint": null,
+            "rateLimitResponses": [],
+            "sawRateLimit": false
+          },
+          "skipped": null
+        }
+      ]
+    },
+    "certificate": {
+      "target": "https://suture-clerk-candidate.onrender.com",
+      "verdict": "RESILIENT",
+      "score": 100,
+      "probesCompleted": 6,
+      "silentWrongCount": 0,
+      "reportHash": "0x6af65ce78f11b390418f410ae678e3fbc40656bf1d6a2969e1e436873a0390d3",
+      "timestamp": 1791650682,
+      "signature": "0x30d18f64d426cb6e1087542ca6c9e072d3798ac837849951d62dfff75b5ae2933f424b310f9ac5255ab7af0109198123d5443f2387b350df8fa9e559bd5268ac1b",
+      "signerAddress": "0x7daB117F400d6C8519561bA8DA54021Bf4c9481D",
+      "attestationHash": "0x5cdc3b81699a1e62b9c2b253b48014916b32c8eaae55a5d2fdbfb250bc94847f"
+    },
+    "explanation": null,
+    "explanationUnavailable": "no explanation model is configured on this deployment, so reports carry evidence and a verdict but no plain-English summary. The verdict is unaffected: it is computed before the explainer runs and never reads its output.",
+    "permanentLink": "/c/sp1.G74jEVWcUUG0OODJeA0vgAXrRYWiqsJ7EI4I8XN73lsO5mg1UFBrK_XNhuMA1JR_PiU3TXVa_zC5ttVOLSorDk9CCWI-wQCg5Ned7XXulW3qltxbgeUAPxC0DktX37WxSvnVB-Vp5WH8C1ea-Ge_b620--JiZGyEi2QQLsZt_arqbPfCEczcsQzydO_MMSjygeej2BhSKFSEi9FRElCeFXms1Kz9q-dEVEQcSRseuNIHHvokEVMqebn36ManqbA9nwYlOtPqCSD8FeGNU6C-HoC3S7I3uPi9-9D954HHli1LCsDvZjNMh2a-VedRlPJbgQk2LyTnzqqDS-Ea_Sgih7RtBveAZjqy_1QTTUa1sHgSIOjeDCJTJa5eCXxQ3rI5mVCBKEoZYqISBQ5h1wSzMv7dax4XA5YjH11qtu3KwaieDXe8ryFEjRHCGSIU3tfebJVr8s4gvVCNQw_8aE-WhxG6rDnM2U2tAeiYmOfASwjx43JoOtBls8tEs2RDMzms7dkZ4IeAHRL3o4AWvaZVUc9V3nxCHhHwXdXjL36dfoBR8wiSU-sBPrAuvwgO3gpSIHfLAm7_5sChZQI-oqv4_sgfOHUMxYkDrWOg5KeXAr4vto8FRZ-teRhqJRI03KDGrwgi0SBcIR82LXJcSheMmSVY2BwnG_jsCZaEJW-R_CBP2Zsf_bO7GL8QqS1acOQ9Yo1ucS5-RwDjjKMdInmeRckwXTxQWLrzNaNmYRfYVJdDg4ow-MTPteAGI6POfkVewQO0yThl5n4xF2rOOW56boJiLv_3JT0oOMsYit6N8wrXDrlOz-1RDtkGVyqzyH1BlGRKpmLTRxIsQ_v047RmbKrtXfh4UmEgHHOJYIJ_mXVtDwj51SVlhkMjx3kHQYFse5ojRjrbOO_Jwjb_cKjeqWEk5WsZSweH-ObDaspqvizvbfi_3KWloyGXULcs7da1FU0088ebRm7pJ1LFz6WohyvIjpJ3oUuCONMJLssIeFNAEvl3wsjJuNAGjWKRwPhxQ_iU74u0psQTviNXHx5md1x5p8gkx7cUGXtjrBaqW8uesdHsR4n9sELzZe1uGh3aI8PEzRkaLmdl84qSh8K3I2cGI3-4LWSjCx7EWEj92wHiSjjimdkSRLzdojZj0uoU__gDvWFNabD93HBQFS1Efss50ZgPsXN7eX4dCxYOgwD4w0lMKUh0Zz9RKkxUtX3iy9CZA5WyiIAn4hxC-UJQ5Xz5VguFlA0Ff470f9DfAw44D2jIhlWT1MWWsvcAENoGmhHwYHIupw0Yt_nJ2O__v5x-X2ypoDXVO1o__BMpRdTBWO8kaYkhanEjZJ8A2KB1-ZCOjDH1TXRrsIsqXKGZK60DbRC4zWjXicHQO_FSn0Aomr6hbGZvZCT1X6W9jNOQjX-mQIBcMKAMb3v7-4w3-GEZ0C7hEmWUzSiHij15xxCqJ8xVhqFE3wydq9xgCFPNL8kKjrSyxm4deT6NI_Kv0VQ8uE-hDj45SPitXt4Oi2VVzIv1KbSmSFVtVeNLLaPjUXsGzaoKwEKu2VvMVmlM7sbgAaKjTDuA2WCxamvcRHcZjW8AjUfOVf3DQZ1cNW_Ui1GLrkdHxSIH5ZwzSh0enOpCl0nSzMgB2PCwIk5sYd7CTWu2kUKmbme8bYZXAM_U-WOUiTdPiPkzBMS93sJmtshgGYJcl5-g3VF3ESOxhIyyHpSKrKfgzdf30_De66e_skdt1iELL_jxNQUf4i__CN5t8JYM_ElbWoOY_XkIGdBb_YmNwSfIpM47-5g5ceT8ER2ZsUbs2vLlpDkMgpCWbwob9vyOb1Hao3T86cl5jkbHz1C2sjfmR5dtHB33DzlnOJpl9-6w_Gl-8x72zmKdlyJE1UcD8Z-EWDFnZHqYJvqSU09zIvd7e1H-MBsBsTDVnpIYTUljpSId_BIB0TFS-Iz6x7tF-4U02eGW0FdNx2ifRTKTSQD6ThVsjGCwROqfgHe-V2sWRvVXGtl4lg2pFQ8_WCHKY1Vt0mtKCbd1JL4CTrAquY71Osw5zu2Elcym6kvGmf0xQc5mCTXxADMG3lFUUkl4w59MkfTRTEYhXk5nILnZi1URFsb-AFeHGoGL2ACbkaenbDz5Kv-eLAfZZph7lLYHjJmnkzE1Y3quQBa3nqSRD2mfxXANmtH2Z5NmgjRdlHroZqO0abJw6KRB-D5x7OYwEVnXGa7ZmKAq16cxCeRND48dJLdHI2CK7X5wjbpJL6KUy0qZBL6OPdSP_0ujBtXtPl8Qo2DcFNX8wJd7cAOwNLAqK2gED9KHfAc7Cpn4UkSxYb6uEcX6bPrcoDMqs9EBoRR7djsOJ2m3fTg-u5-745NfvtntPpyWvTQokNEsgyFWJB0DKTFsjA7fokRTTP9-bEzHUyRsT4qnDI6IRnUJjIzCFNUlAERchH72q88F8N_ymvYev4jFAYJ-BSHXji_fagFTq4tjSWGxuMLmhxM4YPgRExU-XZxAUzCnJ1pcKXhw6X_AMOjXZISsyxbBjwp1WsfCoeETnu18XCIUx2juvUdLcymYr5AUI9zIVlLNOnkBITAciUdF-BL7KVaY6zdjVaNGyTwb6-Gpxv0pcgaPvesz-R54vi3A2EdUDDWst_hZtADh-186xPGTR8bvlUoy8Psk2tNcjhaRuEYVTUXKJQ4ogVZM7Zu5qqlDd-rq6ILquF4k5z5-",
+    "permanentLinkUnavailable": null,
+    "permanentUrl": "https://stressproof-6g88.onrender.com/c/sp1.G74jEVWcUUG0OODJeA0vgAXrRYWiqsJ7EI4I8XN73lsO5mg1UFBrK_XNhuMA1JR_PiU3TXVa_zC5ttVOLSorDk9CCWI-wQCg5Ned7XXulW3qltxbgeUAPxC0DktX37WxSvnVB-Vp5WH8C1ea-Ge_b620--JiZGyEi2QQLsZt_arqbPfCEczcsQzydO_MMSjygeej2BhSKFSEi9FRElCeFXms1Kz9q-dEVEQcSRseuNIHHvokEVMqebn36ManqbA9nwYlOtPqCSD8FeGNU6C-HoC3S7I3uPi9-9D954HHli1LCsDvZjNMh2a-VedRlPJbgQk2LyTnzqqDS-Ea_Sgih7RtBveAZjqy_1QTTUa1sHgSIOjeDCJTJa5eCXxQ3rI5mVCBKEoZYqISBQ5h1wSzMv7dax4XA5YjH11qtu3KwaieDXe8ryFEjRHCGSIU3tfebJVr8s4gvVCNQw_8aE-WhxG6rDnM2U2tAeiYmOfASwjx43JoOtBls8tEs2RDMzms7dkZ4IeAHRL3o4AWvaZVUc9V3nxCHhHwXdXjL36dfoBR8wiSU-sBPrAuvwgO3gpSIHfLAm7_5sChZQI-oqv4_sgfOHUMxYkDrWOg5KeXAr4vto8FRZ-teRhqJRI03KDGrwgi0SBcIR82LXJcSheMmSVY2BwnG_jsCZaEJW-R_CBP2Zsf_bO7GL8QqS1acOQ9Yo1ucS5-RwDjjKMdInmeRckwXTxQWLrzNaNmYRfYVJdDg4ow-MTPteAGI6POfkVewQO0yThl5n4xF2rOOW56boJiLv_3JT0oOMsYit6N8wrXDrlOz-1RDtkGVyqzyH1BlGRKpmLTRxIsQ_v047RmbKrtXfh4UmEgHHOJYIJ_mXVtDwj51SVlhkMjx3kHQYFse5ojRjrbOO_Jwjb_cKjeqWEk5WsZSweH-ObDaspqvizvbfi_3KWloyGXULcs7da1FU0088ebRm7pJ1LFz6WohyvIjpJ3oUuCONMJLssIeFNAEvl3wsjJuNAGjWKRwPhxQ_iU74u0psQTviNXHx5md1x5p8gkx7cUGXtjrBaqW8uesdHsR4n9sELzZe1uGh3aI8PEzRkaLmdl84qSh8K3I2cGI3-4LWSjCx7EWEj92wHiSjjimdkSRLzdojZj0uoU__gDvWFNabD93HBQFS1Efss50ZgPsXN7eX4dCxYOgwD4w0lMKUh0Zz9RKkxUtX3iy9CZA5WyiIAn4hxC-UJQ5Xz5VguFlA0Ff470f9DfAw44D2jIhlWT1MWWsvcAENoGmhHwYHIupw0Yt_nJ2O__v5x-X2ypoDXVO1o__BMpRdTBWO8kaYkhanEjZJ8A2KB1-ZCOjDH1TXRrsIsqXKGZK60DbRC4zWjXicHQO_FSn0Aomr6hbGZvZCT1X6W9jNOQjX-mQIBcMKAMb3v7-4w3-GEZ0C7hEmWUzSiHij15xxCqJ8xVhqFE3wydq9xgCFPNL8kKjrSyxm4deT6NI_Kv0VQ8uE-hDj45SPitXt4Oi2VVzIv1KbSmSFVtVeNLLaPjUXsGzaoKwEKu2VvMVmlM7sbgAaKjTDuA2WCxamvcRHcZjW8AjUfOVf3DQZ1cNW_Ui1GLrkdHxSIH5ZwzSh0enOpCl0nSzMgB2PCwIk5sYd7CTWu2kUKmbme8bYZXAM_U-WOUiTdPiPkzBMS93sJmtshgGYJcl5-g3VF3ESOxhIyyHpSKrKfgzdf30_De66e_skdt1iELL_jxNQUf4i__CN5t8JYM_ElbWoOY_XkIGdBb_YmNwSfIpM47-5g5ceT8ER2ZsUbs2vLlpDkMgpCWbwob9vyOb1Hao3T86cl5jkbHz1C2sjfmR5dtHB33DzlnOJpl9-6w_Gl-8x72zmKdlyJE1UcD8Z-EWDFnZHqYJvqSU09zIvd7e1H-MBsBsTDVnpIYTUljpSId_BIB0TFS-Iz6x7tF-4U02eGW0FdNx2ifRTKTSQD6ThVsjGCwROqfgHe-V2sWRvVXGtl4lg2pFQ8_WCHKY1Vt0mtKCbd1JL4CTrAquY71Osw5zu2Elcym6kvGmf0xQc5mCTXxADMG3lFUUkl4w59MkfTRTEYhXk5nILnZi1URFsb-AFeHGoGL2ACbkaenbDz5Kv-eLAfZZph7lLYHjJmnkzE1Y3quQBa3nqSRD2mfxXANmtH2Z5NmgjRdlHroZqO0abJw6KRB-D5x7OYwEVnXGa7ZmKAq16cxCeRND48dJLdHI2CK7X5wjbpJL6KUy0qZBL6OPdSP_0ujBtXtPl8Qo2DcFNX8wJd7cAOwNLAqK2gED9KHfAc7Cpn4UkSxYb6uEcX6bPrcoDMqs9EBoRR7djsOJ2m3fTg-u5-745NfvtntPpyWvTQokNEsgyFWJB0DKTFsjA7fokRTTP9-bEzHUyRsT4qnDI6IRnUJjIzCFNUlAERchH72q88F8N_ymvYev4jFAYJ-BSHXji_fagFTq4tjSWGxuMLmhxM4YPgRExU-XZxAUzCnJ1pcKXhw6X_AMOjXZISsyxbBjwp1WsfCoeETnu18XCIUx2juvUdLcymYr5AUI9zIVlLNOnkBITAciUdF-BL7KVaY6zdjVaNGyTwb6-Gpxv0pcgaPvesz-R54vi3A2EdUDDWst_hZtADh-186xPGTR8bvlUoy8Psk2tNcjhaRuEYVTUXKJQ4ogVZM7Zu5qqlDd-rq6ILquF4k5z5-",
+    "permanentLinkNote": "this link carries the whole report and its signature inside the URL, so it verifies with no help from us. It keeps working after this service restarts, sleeps, redeploys, or shuts down for good. The report id above is only a shortcut while this process happens to still be running."
+  }
+}
