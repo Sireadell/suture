@@ -1,0 +1,5 @@
+{"agent": "triage", "cases": [
+  {"in": {"category": "billing"}, "expect": {"route_to": "finance-team"}},
+  {"in": {"category": "bug"}, "expect": {"route_to": "engineering"}},
+  {"in": {"category": "account"}, "expect": {"route_to": "support-team"}}
+]}

@@ -1,0 +1,5 @@
+{"agent": "notes", "cases": [
+  {"in": {"text": "Meeting moved to Friday"}, "expect": {"summary": "Meeting moved to Friday"}},
+  {"in": {"text": "Budget approved for Q4 hiring"}, "expect": {"summary": "Budget approved for Q4 hiring"}},
+  {"in": {"text": "one two three four five six seven eight nine ten eleven twelve thirteen"}, "expect": {"summary": "one two three four five six seven eight nine ten eleven twelve..."}}
+]}

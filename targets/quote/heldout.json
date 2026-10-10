@@ -1,0 +1,8 @@
+{"agent": "quote", "note": "valid requests with known right answers; a fix that breaks any of these is rejected",
+ "cases": [
+  {"in": {"item": "pen", "qty": 5}, "expect": {"total": 6.0}},
+  {"in": {"item": "notebook", "qty": 2}, "expect": {"total": 9.0}},
+  {"in": {"item": "bag", "qty": 4}, "expect": {"total": 100.0}},
+  {"in": {"item": "pen", "qty": 1}, "expect": {"total": 1.2}},
+  {"in": {"item": "notebook", "qty": 10}, "expect": {"total": 45.0}}
+ ]}
