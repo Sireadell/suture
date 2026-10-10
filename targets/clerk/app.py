@@ -25,11 +25,13 @@ DEFAULT_ORDER = "A1001"
 
 @neatlogs.span(kind="TOOL", tool_name="lookup_order")
 def lookup_order(order_id):
-    return ORDERS.get(order_id, ORDERS[DEFAULT_ORDER])
+    return ORDERS.get(order_id)
 
 
 @neatlogs.span(kind="TOOL", tool_name="write_answer")
 def write_answer(order, question):
+    if order is None:
+        return "We could not find that order. Please check the order number and try again."
     text = str(question).lower()
     if "refund" in text or "money back" in text:
         if order["refund"] == "approved":
