@@ -1,0 +1,65 @@
+[
+  {
+    "case": "valid_refund_A1001",
+    "status": "200",
+    "reply": {
+      "order_id": "A1001",
+      "answer": "Your refund of $42.50 for the Desk lamp is approved and arrives in 3 business days."
+    },
+    "t": "18:19:21"
+  },
+  {
+    "case": "valid_pending_A1002",
+    "status": "200",
+    "reply": {
+      "order_id": "A1002",
+      "answer": "Your refund for the Backpack is pending review."
+    },
+    "t": "18:19:22"
+  },
+  {
+    "case": "valid_ineligible_A1003",
+    "status": "200",
+    "reply": {
+      "order_id": "A1003",
+      "answer": "Your refund for the Headphones is not eligible, past 30 days."
+    },
+    "t": "18:19:23"
+  },
+  {
+    "case": "unknown_order_ZZ-FAKE-3",
+    "status": "200",
+    "reply": {
+      "order_id": "ZZ-FAKE-3",
+      "answer": "We could not find that order. Please check the order number and try again."
+    },
+    "t": "18:19:24"
+  },
+  {
+    "case": "unknown_order_A9999",
+    "status": "200",
+    "reply": {
+      "order_id": "A9999",
+      "answer": "We could not find that order. Please check the order number and try again."
+    },
+    "t": "18:19:25"
+  },
+  {
+    "case": "malformed_json",
+    "status": "400",
+    "reply": "request body is not valid JSON",
+    "t": "18:19:26"
+  },
+  {
+    "case": "not_json_text",
+    "status": "400",
+    "reply": "request body is not valid JSON",
+    "t": "18:19:28"
+  },
+  {
+    "case": "json_array_body",
+    "status": "400",
+    "reply": "request body must be a JSON object",
+    "t": "18:19:29"
+  }
+]

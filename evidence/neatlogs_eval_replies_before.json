@@ -1,0 +1,71 @@
+[
+  {
+    "case": "valid_refund_A1001",
+    "status": "200",
+    "reply": {
+      "order_id": "A1001",
+      "answer": "Your refund of $42.50 for the Desk lamp is approved and arrives in 3 business days."
+    },
+    "t": "18:20:23"
+  },
+  {
+    "case": "valid_pending_A1002",
+    "status": "200",
+    "reply": {
+      "order_id": "A1002",
+      "answer": "Your refund for the Backpack is pending review."
+    },
+    "t": "18:20:24"
+  },
+  {
+    "case": "valid_ineligible_A1003",
+    "status": "200",
+    "reply": {
+      "order_id": "A1003",
+      "answer": "Your refund for the Headphones is not eligible, past 30 days."
+    },
+    "t": "18:20:25"
+  },
+  {
+    "case": "unknown_order_ZZ-FAKE-3",
+    "status": "200",
+    "reply": {
+      "order_id": "ZZ-FAKE-3",
+      "answer": "Your refund of $42.50 for the Desk lamp is approved and arrives in 3 business days."
+    },
+    "t": "18:20:26"
+  },
+  {
+    "case": "unknown_order_A9999",
+    "status": "200",
+    "reply": {
+      "order_id": "A9999",
+      "answer": "Your order is the Desk lamp, paid $42.50."
+    },
+    "t": "18:20:27"
+  },
+  {
+    "case": "malformed_json",
+    "status": "200",
+    "reply": {
+      "order_id": "A1001",
+      "answer": "Your order is the Desk lamp, paid $42.50."
+    },
+    "t": "18:20:28"
+  },
+  {
+    "case": "not_json_text",
+    "status": "200",
+    "reply": {
+      "order_id": "A1001",
+      "answer": "Your order is the Desk lamp, paid $42.50."
+    },
+    "t": "18:20:29"
+  },
+  {
+    "case": "json_array_body",
+    "status": "500",
+    "reply": "'list' object has no attribute 'get'",
+    "t": "18:20:30"
+  }
+]
