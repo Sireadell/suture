@@ -37,3 +37,16 @@ Note: the data grids inside the pages did not render values in the automated bro
 - A snapshot is the only way to keep the earlier version: it pins the plan but later work does not flow into it. Fine, but you must remember to take it before editing.
 - Ari had no way to read our scorecard or traces directly; the real numbers had to be pasted into chat.
 - No purchase, upgrade or payment control was touched. No limit of the free plan was hit.
+
+## Run log (added later the same day)
+A fifth page, "Suture, Run log", holds one row per real repair run, with totals computed from the rows. The Financial plan page shows the logged acceptance rate and cost per accepted fix under the volume table. Plan assumptions were not changed.
+
+| Item | Run 1 | Run 2 |
+|---|---|---|
+| Fix written by | Suture's Gemini model | neatlogs |
+| Attempts, accepted | 1, yes | 2, yes |
+| Score, quiet failures | 75 to 100, 1 to 0 | 75 to 100, 1 to 0 |
+| Cost | $0.112866 | $0.015 (checks only) |
+
+Totals: 2 runs, 100% accepted, 1.5 average attempts, $0.063933 average cost per accepted fix (pulled down because Run 2 has no model cost), 382 average seconds. Screenshots: 6_run_log_ari_summary.jpg, 7_run_log_page.jpg.
+Gaps: cfo.ai treats an empty cost cell as 0, so a blank skews the averages. The browser tab froze twice when a long message was typed into the page chat, so the first two attempts at this request did not send.
