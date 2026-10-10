@@ -3,8 +3,20 @@
   "checkpoint_id": "01M4KC7KRQSKQBJT2GNETNT43F",
   "strategy": "manual-commit",
   "branch": "main",
-  "checkpoints_count": 1,
-  "files_touched": null,
+  "checkpoints_count": 2,
+  "files_touched": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "evidence/entire/ENTIRE_NOTES.md",
+    "evidence/entire/GRAPH_AND_BRAIN.md",
+    "evidence/entire/raw/graph_checkpoint.txt",
+    "evidence/entire/raw/graph_commit_fix.txt",
+    "evidence/entire/raw/graph_diff_fix.txt",
+    "evidence/entire/raw/graph_help.txt",
+    "evidence/entire/raw/graph_impact.txt",
+    "evidence/entire/raw/graph_init_agents.txt",
+    "evidence/entire/raw/graph_search.txt"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,13 +24,20 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
-    "input_tokens": 36,
-    "cache_creation_tokens": 14287,
-    "cache_read_tokens": 3328831,
-    "output_tokens": 7736,
-    "api_call_count": 18
+    "input_tokens": 110,
+    "cache_creation_tokens": 70862,
+    "cache_read_tokens": 10179416,
+    "output_tokens": 20452,
+    "api_call_count": 55
   }
 }
