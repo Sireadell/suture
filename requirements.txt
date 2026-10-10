@@ -1,0 +1,4 @@
+neatlogs
+google-genai
+requests
+pytest
