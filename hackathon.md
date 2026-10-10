@@ -29,6 +29,7 @@ Sireadell (solo).
 | 2026-10-10 | Failures and run cost now read back from neatlogs (CLI). Found that neatlogs' token count leaves out thinking tokens, so Suture keeps its own counters too. |
 | 2026-10-10 | cfo.ai draft plan numbers written, then replaced with real numbers from the run: about $0.11 per accepted fix. |
 | 2026-10-10 | Extra target agents (notes, quote, triage) added with held-out checks. Not yet run, not claimed. |
+| 2026-10-10 | Checked what the notes run needs: its own two public services and a StressProof allowlist entry, plus a loop that takes the target name. Not run yet. |
 
 ## Demo
 Pending. Demo video (max 3:00) not yet recorded. Reproduce the proven run with the steps in `README.md`.
