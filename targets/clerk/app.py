@@ -15,6 +15,8 @@ if TRACING:
         workflow_name="clerk",
     )
 
+ThreadingHTTPServer.request_queue_size = 512
+
 ORDERS = {
     "A1001": {"item": "Desk lamp", "paid": 42.50, "refund": "approved", "days": 3},
     "A1002": {"item": "Backpack", "paid": 89.00, "refund": "pending review", "days": None},
@@ -42,8 +44,11 @@ def write_answer(order, question):
 def handle(raw_body):
     try:
         data = json.loads(raw_body)
-    except Exception:
-        data = {}
+    except Exception as exc:
+        raise ValueError(f"Malformed JSON: {exc}") from exc
+    if not isinstance(data, dict):
+        raise ValueError("Malformed JSON: request body must be a JSON object")
+
     order_id = data.get("order_id", DEFAULT_ORDER)
     question = data.get("question", "")
     order = lookup_order(order_id)
@@ -63,9 +68,23 @@ class Handler(BaseHTTPRequestHandler):
         self._send(200, {"agent": "clerk", "status": "ok"})
 
     def do_POST(self):
-        length = int(self.headers.get("content-length") or 0)
+        try:
+            length = int(self.headers.get("content-length") or 0)
+        except (ValueError, TypeError):
+            self._send(400, {"error": "Invalid Content-Length"})
+            return
+
         raw = self.rfile.read(length).decode("utf-8", errors="replace")
-        self._send(200, handle(raw))
+        try:
+            result = handle(raw)
+        except ValueError as exc:
+            self._send(400, {"error": str(exc)})
+            return
+        except Exception:
+            self._send(400, {"error": "Bad request"})
+            return
+
+        self._send(200, result)
 
     def log_message(self, *args):
         pass
@@ -73,6 +92,7 @@ class Handler(BaseHTTPRequestHandler):
 
 def main():
     port = int(os.environ.get("PORT", "8000"))
+    ThreadingHTTPServer.request_queue_size = 512
     server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
     try:
         server.serve_forever()
