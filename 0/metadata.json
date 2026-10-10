@@ -1,0 +1,37 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KD7YNZTCGFXQ3791DKVM3V",
+  "session_id": "8d0f12e7-0f3e-42d3-a486-1efdffabeaf9",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T17:19:52.7488978Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "suture/loop.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "9d28277aa656",
+  "checkpoint_transcript_start": 1218,
+  "transcript_lines_at_start": 1218,
+  "compact_transcript_start": 130,
+  "token_usage": {
+    "input_tokens": 4,
+    "cache_creation_tokens": 3195,
+    "cache_read_tokens": 545406,
+    "output_tokens": 2359,
+    "api_call_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-10T17:19:52.5180305Z",
+    "agent_lines": 130,
+    "agent_removed": 19,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 130,
+    "total_lines_changed": 149,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
