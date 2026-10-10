@@ -1,0 +1,4 @@
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+The StressProof allowlist now includes both clerk2 URLs, so continue steps 4 and 5.
+The founder approved it and I applied it with the Render API (PUT returned 200, all seven entries kept). Render redeploys StressProof after an env change, so wait a few minutes and confirm /demo/certify accepts a clerk2 URL before the "before" run. Run the full flow, make the fix prompt generic if needed, run entire blame/why/experts on the failure and fix lines, push, and report. Be honest if clerk2 shows only loud failures (a refusal or a crash score is still evidence; do not fake a quiet failure).
+</cross-session-message>
