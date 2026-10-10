@@ -1,0 +1,111 @@
+
+  targets/clerk2/app.py
+
+  Line  Tag   Agent         Model               Author            Checkpoint/Session                     Content
+  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+     1  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    """Clerk2: a small refund-lookup agent. A customer sends an order id and a question, and gets an answer about the ref...
+     2  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    import json
+     3  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    import os
+     4  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+     5  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+     6  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    import neatlogs
+     7  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+     8  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    TRACING = bool(os.environ.get("NEATLOGS_API_KEY"))
+     9  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    if TRACING:
+    10  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        neatlogs.init(api_key=os.environ["NEATLOGS_API_KEY"], endpoint="https://ingest.neatlogs.com", workflow_name="cler...
+    11  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    12  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    ORDERS = {
+    13  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        "A1001": {"item": "Desk lamp", "paid": 42.50, "refund": "approved"},
+    14  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        "A1002": {"item": "Phone case", "paid": 19.99, "refund": "pending review"},
+    15  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        "A1003": {"item": "Gift card", "paid": 50.00, "refund": "not eligible"},
+    16  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    }
+    17  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    18  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    19  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    class BadRequestError(Exception):
+    20  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        """Raised for client-side input errors (HTTP 400)."""
+    21  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    22  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    23  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    @neatlogs.span(kind="TOOL", tool_name="lookup_order")
+    24  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    def lookup_order(order_id):
+    25  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        # Only query if order_id is a valid hashable type (string)
+    26  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        if not isinstance(order_id, str):
+    27  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            return None
+    28  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        return ORDERS.get(order_id)
+    29  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    30  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    31  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    @neatlogs.span(kind="TOOL", tool_name="write_answer")
+    32  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    def write_answer(order_id, order, question):
+    33  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        if order is None:
+    34  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            return f"Order {order_id} could not be found."
+    35  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    36  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        refund = order["refund"]
+    37  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        if refund == "approved":
+    38  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            return f"Your refund for the {order['item']} (order {order_id}) is approved. ${order['paid']:.2f} goes back t...
+    39  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        if refund == "pending review":
+    40  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            return f"Your refund for the {order['item']} (order {order_id}) is pending review. We will email you once it ...
+    41  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        return f"The {order['item']} (order {order_id}) is not eligible for a refund."
+    42  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    43  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    44  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    @neatlogs.span(kind="WORKFLOW")
+    45  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    def handle(raw_body):
+    46  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        try:
+    47  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            data = json.loads(raw_body)
+    48  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        except json.JSONDecodeError as err:
+    49  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            raise BadRequestError("Malformed JSON body") from err
+    50  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    51  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        if not isinstance(data, dict):
+    52  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            raise BadRequestError("Invalid request body structure")
+    53  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    54  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        if "order_id" not in data:
+    55  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            raise BadRequestError("Missing order_id")
+    56  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    57  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        order_id = data.get("order_id")
+    58  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5        if not isinstance(order_id, str):
+    59  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            raise BadRequestError("Invalid order_id type")
+    60  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5    
+    61  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        question = data.get("question", "")
+    62  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        order = lookup_order(order_id)
+    63  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        return {"order_id": order_id, "answer": write_answer(order_id, order, question)}
+    64  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    65  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    66  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    class Handler(BaseHTTPRequestHandler):
+    67  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        def _send(self, code, payload):
+    68  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            body = json.dumps(payload).encode()
+    69  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self.send_response(code)
+    70  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self.send_header("content-type", "application/json")
+    71  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self.send_header("content-length", str(len(body)))
+    72  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self.end_headers()
+    73  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self.wfile.write(body)
+    74  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    75  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        def do_GET(self):
+    76  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            self._send(200, {"agent": "clerk2", "status": "ok"})
+    77  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    78  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        def do_POST(self):
+    79  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            length = int(self.headers.get("content-length") or 0)
+    80  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            raw = self.rfile.read(length).decode("utf-8", errors="replace")
+    81  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            try:
+    82  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5                self._send(200, handle(raw))
+    83  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5            except BadRequestError as err:
+    84  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KS486XCH2TXNTZ3CTZVGGX/84b136d5                self._send(400, {"error": str(err)})
+    85  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            except Exception as err:
+    86  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5                self._send(500, {"error": str(err)})
+    87  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    88  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        def log_message(self, *args):
+    89  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            pass
+    90  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    91  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+    92  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    def main():
+    93  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        server = ThreadingHTTPServer(("0.0.0.0", int(os.environ.get("PORT", "8000"))), Handler)
+    94  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        try:
+    95  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            server.serve_forever()
+    96  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        finally:
+    97  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5            if TRACING:
+    98  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5                neatlogs.flush()
+    99  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5                neatlogs.shutdown()
+   100  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+   101  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    
+   102  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5    if __name__ == "__main__":
+   103  [AI]  Claude Code   claude-sonnet-5-5   Sireadell         01M4KPV065SEHQQ4NAPYQD2H2A/84b136d5        main()
+  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Summary: AI: 103 (100%) · Human: 0 (0%) · Mixed: 0 (0%)
+

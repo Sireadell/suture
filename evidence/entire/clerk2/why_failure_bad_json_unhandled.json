@@ -1,0 +1,43 @@
+{
+  "file": "targets/clerk2/app.py",
+  "line": {
+    "line_number": 36,
+    "authorship": "ai",
+    "tag": "[AI]",
+    "commit_sha": "5b59b0e6c5afc1c982174780f60c845470aa9768",
+    "short_commit_sha": "5b59b0e6",
+    "author": "Sireadell",
+    "author_time": "2026-10-10T20:07:29Z",
+    "checkpoint_id": "01M4KPV065SEHQQ4NAPYQD2H2A",
+    "session_id": "84b136d5-3a98-4ffc-afd5-1fbfb10efdac",
+    "agent": "Claude Code",
+    "model": "claude-sonnet-5-5",
+    "content": "    data = json.loads(raw_body)",
+    "candidates": [
+      {
+        "checkpoint_id": "01M4KPV065SEHQQ4NAPYQD2H2A",
+        "session_id": "84b136d5-3a98-4ffc-afd5-1fbfb10efdac",
+        "agent": "Claude Code",
+        "model": "claude-sonnet-5-5",
+        "files_touched": [
+          "targets/clerk2/app.py",
+          "targets/clerk2/requirements.txt",
+          "targets/clerk2/test_clerk2.py"
+        ]
+      }
+    ]
+  },
+  "checkpoints": {
+    "01M4KPV065SEHQQ4NAPYQD2H2A": {
+      "checkpoint_id": "01M4KPV065SEHQQ4NAPYQD2H2A",
+      "session_id": "84b136d5-3a98-4ffc-afd5-1fbfb10efdac",
+      "agent": "Claude Code",
+      "model": "claude-sonnet-5-5",
+      "files_touched": [
+        "targets/clerk2/app.py",
+        "targets/clerk2/requirements.txt",
+        "targets/clerk2/test_clerk2.py"
+      ]
+    }
+  }
+}
