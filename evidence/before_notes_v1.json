@@ -1,0 +1,459 @@
+{
+  "id": "9ced5bee43c6d4a3",
+  "report": {
+    "target": "https://suture-notes.onrender.com",
+    "specVersion": "sp1-49758d6ca7c8",
+    "verdict": "PARTIAL",
+    "verdictReason": "scored 83 with 1 silent failure(s)",
+    "score": 83,
+    "probesCompleted": 6,
+    "probesScorable": 10,
+    "completedFamilies": [
+      "adversarial",
+      "load",
+      "malformed_input"
+    ],
+    "probesRunSummary": "All 12 probes ran. 6 reached a conclusion firm enough to score, covering 3 different kinds of failure (adversarial, load, malformed_input). 4 could not be judged from outside the API and are reported as unclear, not as failures.",
+    "silentWrongCount": 1,
+    "unclassifiedCount": 4,
+    "notApplicable": [
+      "auth_absent"
+    ],
+    "requestsUsed": 27,
+    "maxRequests": 30,
+    "durationMs": 21222,
+    "probes": [
+      {
+        "probe": "repeat_determinism",
+        "outcome": "NOT_SCORED",
+        "reason": "instrumentation only",
+        "points": 0,
+        "requestsUsed": 2,
+        "findings": {
+          "scored": false,
+          "statuses": [
+            200,
+            200
+          ],
+          "bothParsedAsJson": true,
+          "fieldSetChanged": false,
+          "fieldsFirst": [
+            "summary"
+          ],
+          "fieldsSecond": [
+            "summary"
+          ],
+          "bodiesIdentical": true,
+          "analyses": [
+            {
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 91,
+              "echoedMutatedInput": false
+            },
+            {
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 48,
+              "echoedMutatedInput": false
+            }
+          ]
+        },
+        "skipped": null
+      },
+      {
+        "probe": "malformed_json",
+        "outcome": "SILENT_WRONG",
+        "reason": "answered HTTP 200 with no error signal to input it should have refused",
+        "points": 0,
+        "requestsUsed": 1,
+        "findings": {
+          "sentBytes": 33,
+          "status": 200,
+          "bodyParsedAsJson": true,
+          "errorSignalPresent": false,
+          "elapsedMs": 48,
+          "echoedMutatedInput": false
+        },
+        "skipped": null
+      },
+      {
+        "probe": "missing_required_field",
+        "outcome": "UNCLASSIFIED",
+        "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing",
+        "points": 0,
+        "requestsUsed": 1,
+        "findings": {
+          "fieldRemoved": "text",
+          "status": 200,
+          "bodyParsedAsJson": true,
+          "errorSignalPresent": false,
+          "elapsedMs": 49,
+          "echoedMutatedInput": false
+        },
+        "skipped": null
+      },
+      {
+        "probe": "wrong_type",
+        "outcome": "UNCLASSIFIED",
+        "reason": "answered normally, but the field we changed may simply be optional \u2014 from outside, this proves nothing",
+        "points": 0,
+        "requestsUsed": 1,
+        "findings": {
+          "fieldFlipped": "text",
+          "originalType": "string",
+          "newType": "number",
+          "status": 200,
+          "bodyParsedAsJson": true,
+          "errorSignalPresent": false,
+          "elapsedMs": 46,
+          "echoedMutatedInput": false
+        },
+        "skipped": null
+      },
+      {
+        "probe": "oversize_payload",
+        "outcome": "GRACEFUL",
+        "reason": "accepted and answered a 1MB request without falling over",
+        "points": 10,
+        "requestsUsed": 1,
+        "findings": {
+          "sentBytes": 1048576,
+          "targetBytes": 1048576,
+          "status": 200,
+          "bodyParsedAsJson": true,
+          "errorSignalPresent": false,
+          "elapsedMs": 289,
+          "echoedMutatedInput": false
+        },
+        "skipped": null
+      },
+      {
+        "probe": "contradictory_constraint",
+        "outcome": "UNCLASSIFIED",
+        "reason": "probe skipped (no_contradictable_field)",
+        "points": 0,
+        "requestsUsed": 0,
+        "findings": {},
+        "skipped": "no_contradictable_field"
+      },
+      {
+        "probe": "differential_corruption",
+        "outcome": "UNCLASSIFIED",
+        "reason": "could not be measured (baseline_too_noisy)",
+        "points": 0,
+        "requestsUsed": 0,
+        "findings": {
+          "baselineFieldCount": 1,
+          "volatileFields": [],
+          "volatileFieldRatio": 0,
+          "stableFieldCount": 1,
+          "minStableFieldsRequired": 2
+        },
+        "skipped": "baseline_too_noisy"
+      },
+      {
+        "probe": "injection_canary",
+        "outcome": "CLEAN_REJECT",
+        "reason": "the canary appeared 1 time(s), but its matching controls echoed too, so this is a target that quotes input back rather than one that obeys it",
+        "points": 10,
+        "requestsUsed": 10,
+        "findings": {
+          "fieldInjected": "text",
+          "canaryToken": "SPCANARY7F3A9CD41E6B2085",
+          "techniques": [
+            {
+              "technique": "direct_override",
+              "carrierShape": "plain_text",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 58,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "technique": "authority_impersonation",
+              "carrierShape": "plain_text",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 35,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "technique": "delayed_post_processing",
+              "carrierShape": "plain_text",
+              "canaryFound": true,
+              "matchMethod": "plain",
+              "matchMethods": [
+                "plain",
+                "whitespace_stripped",
+                "case_insensitive",
+                "unicode_escape"
+              ],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 27,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "technique": "html_comment_in_data",
+              "carrierShape": "html_comment",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 37,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "technique": "nested_json_value",
+              "carrierShape": "nested_json",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 49,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "technique": "base64_wrapped",
+              "carrierShape": "base64",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 26,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            }
+          ],
+          "controls": [
+            {
+              "carrierShape": "plain_text",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 27,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "carrierShape": "html_comment",
+              "canaryFound": true,
+              "matchMethod": "plain",
+              "matchMethods": [
+                "plain",
+                "whitespace_stripped",
+                "case_insensitive",
+                "unicode_escape"
+              ],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 28,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "carrierShape": "nested_json",
+              "canaryFound": false,
+              "matchMethod": null,
+              "matchMethods": [],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 39,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            },
+            {
+              "carrierShape": "base64",
+              "canaryFound": true,
+              "matchMethod": "base64_decoded",
+              "matchMethods": [
+                "base64_decoded"
+              ],
+              "status": 200,
+              "bodyParsedAsJson": true,
+              "errorSignalPresent": false,
+              "elapsedMs": 27,
+              "echoedMutatedInput": false,
+              "insideVerbatimEcho": false
+            }
+          ],
+          "controlEchoedByCarrierShape": {
+            "plain_text": false,
+            "html_comment": true,
+            "nested_json": false,
+            "base64": true
+          },
+          "distinctTechniquesLanded": 1,
+          "landedTechniques": [
+            "delayed_post_processing"
+          ],
+          "techniquesLandedWithSilentControl": 1,
+          "techniquesWithSilentControl": [
+            "delayed_post_processing"
+          ],
+          "techniquesLandedOutsideVerbatimEcho": 1,
+          "minAgreeingTechniquesForReference": 2,
+          "successStatusCount": 10,
+          "errorSignalCount": 0
+        },
+        "skipped": null
+      },
+      {
+        "probe": "auth_absent",
+        "outcome": "NOT_APPLICABLE",
+        "reason": "the run was configured without credentials",
+        "points": 0,
+        "requestsUsed": 0,
+        "findings": {
+          "notApplicable": true,
+          "reason": "the run was configured without credentials, so none could be withheld"
+        },
+        "skipped": "not_applicable_no_auth_configured"
+      },
+      {
+        "probe": "slow_client",
+        "outcome": "GRACEFUL",
+        "reason": "answered despite a deliberately slow request body",
+        "points": 10,
+        "requestsUsed": 1,
+        "findings": {
+          "behavior": "responded",
+          "elapsedMs": 20026,
+          "status": 200,
+          "networkError": null,
+          "dripMs": 20000,
+          "cutoffMs": 60000
+        },
+        "skipped": null
+      },
+      {
+        "probe": "concurrent_burst",
+        "outcome": "GRACEFUL",
+        "reason": "handled 3 simultaneous requests without error",
+        "points": 10,
+        "requestsUsed": 3,
+        "findings": {
+          "serverErrorCount": 0,
+          "networkErrorCount": 0,
+          "successCount": 3,
+          "latenciesMs": [
+            53,
+            49,
+            50
+          ]
+        },
+        "skipped": null
+      },
+      {
+        "probe": "rate_flood",
+        "outcome": "GRACEFUL",
+        "reason": "handled the whole burst without changing behaviour",
+        "points": 10,
+        "requestsUsed": 7,
+        "findings": {
+          "timeline": [
+            {
+              "index": 0,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 28,
+              "networkError": null
+            },
+            {
+              "index": 1,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 28,
+              "networkError": null
+            },
+            {
+              "index": 2,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 29,
+              "networkError": null
+            },
+            {
+              "index": 3,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 27,
+              "networkError": null
+            },
+            {
+              "index": 4,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 34,
+              "networkError": null
+            },
+            {
+              "index": 5,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 27,
+              "networkError": null
+            },
+            {
+              "index": 6,
+              "status": 200,
+              "ok": true,
+              "elapsedMs": 26,
+              "networkError": null
+            }
+          ],
+          "changePoint": null,
+          "rateLimitResponses": [],
+          "sawRateLimit": false
+        },
+        "skipped": null
+      }
+    ]
+  },
+  "certificate": {
+    "target": "https://suture-notes.onrender.com",
+    "verdict": "PARTIAL",
+    "score": 83,
+    "probesCompleted": 6,
+    "silentWrongCount": 1,
+    "reportHash": "0x9ced5bee43c6d4a36a7aa95ee4c53c2cca1e1a337f0644dc941f51db4fb6d7cc",
+    "timestamp": 1791656677,
+    "signature": "0xe1c02f01c04fdb49d5b4386ebe867b6a72ddacf2c825b352e2d1d552bf417e915ebab502c16a6d3c7be5bbe053a8140b8269581cb8bb1d18ede76058dbfa8ddf1b",
+    "signerAddress": "0x7daB117F400d6C8519561bA8DA54021Bf4c9481D",
+    "attestationHash": "0x9f4ea8ad3d19ee82432e3e549e17b0efdd457ed9f17c3741c696d514f9646ad4"
+  },
+  "explanation": null,
+  "explanationUnavailable": "no explanation model is configured on this deployment, so reports carry evidence and a verdict but no plain-English summary. The verdict is unaffected: it is computed before the explainer runs and never reads its output.",
+  "permanentLink": "/c/sp1.GxMhEZWcswC0OLAbPj9BFa1dqp1af-Yn9BFmxI84znrXzP9V7ZutT4fNUP6QkgosmFPO2dA8NclpPTF9bWvrSV8RZ5CeyAeWwf-5SGkdlq6-IeJXy372CoVFSCzChryEKDQSIek33VPM_hh2CTFOz-7dz0ERU3kcEqEpVBIO4b7VxyokVvAYzTrPRFDC2vYt_yGeo-A_uGQyJjq50sjRZTcTyd5nixyIfk0QTUpmvhpAtMNnUlxzWK_nPUPwIZ21JIDzbNn7-9HvQuGViugwTxfM1NxzuKJVLP93ko_ahB2Hi8EDS-s-S5w_E23sZt-Pa8r9DQDTUoLSzeoy8ADEOHcbdaUKAcyvgmChCvcYAdYGCzT9PqxiSwHsQT45pNXRa6dOtrda4dWLWDDCMst5Iv0yhK3-mKezmM6sYu-NVLqdPWGEHh7ZfL5KVAAOeosbKOxPL0_37AWyV3ZeXZbCaKNIwNnYgx0oAfSqA0V_DOAyjED5SElmmWcnRED4zpHvSHOIAVIqBuqcdhiQQ7vub2_BOwGnhUen-7tfAxASEfhRYDX_f00AkERvXC3QBQJyJXolgLeTy5e7iG7ahIgZtzwqRixk8UogoJT5QUpj21LNEjEY1KyF3cwZWkHaDlFKy_eupwVoDp0oj_Cl_ZgxaSFILPkhWeF4ARnaR587AhnTbhvsqJkTLHR_w-ysEj0yJZ7QrCEGWJzCJvDkyDwzZagMzAxsPBGZfb5cKrUQLokvF1ykvLvw60hK4U6E7Prf-b_Et92SDz89aGhcgyI1SpQCRgufbqld1Chx8sfe4dbxMzaGre7MhbNFTTFt2qnZXEoym9PxVvronWI88_m50WhdeLlYXq0_BN9L_EcAL_cDt6p12CbEiHwahKN-HW_Ge_nSJlomCRJl7edutpKFVq142yz2fRJQVEVF41rBbNTGwLlKARlx8_-9RRNo3P4igPWmKOBKHLIUxQ3f3e7q29aEVcIp4joKkT3k1OTzz4bBqKai2BTmvD1dVv8JNlp1gbj7_ZjP2b46LAwZf2FL5hxNh0frxhRhBllLRxH5wB0urBruwiRZ3RbWK3SkesA4I5TR2SghHmAt6X3FNYiendQSuRFQ7RT-S9PGJ8cgiXMwddCgN3Fz7aRSOxgIsg9kQU8eMaoii13-nWK0RFvpNrhu4qgXKEx3NNdYP-sgBPTD99isqz-8Umo9RC17f08fGOKBEOPIbyiMhxa1H8fq4kw_GYvAlpF-DbFE7Y-4WYcLaPVdQYUN3O_p5fnW_tbGJVVVxouoat3hOQveYrM269aMvlBENKJbMTh5z5TuOytufa-l0zRuhEVul0lm8ZWYiZs4PeSzrHdDSGocKFV08WO-1avJEEaYEE_xDacba8dr53e-zWtlY1Nwy9YpZYVA5gMrZv9EADPyqMMKgiTJFALNFc7elWYgIvfFWDHIw1IwYGYmfDWUqf8MNKmeamKymu9adkCeve239JlSl6FOtgIJ5N4KminqohAG1RUcFHY9ay2oJh0K5b1QUl9VSLp-ER_9w6c9Boke8v9RjOxUvyQoJbQTm5NId5UWZ8G9i1YRIHc9uQP1Uy2qVw6jGiosgk_aZTFg0qb3c2ASKePEqLcJQkA7K4KXXS8FbdWBM3m5Wt4A_GHcFEHGdwVZ-hQ0iGhEiq2S3DXkZRJv8VeAmyYXHH1vKs4m4XLLXiqDpSHFOZzNoKMCQHqfuunIq8JX68Z7n__3HKSmC06rQgVxy9mGKxLfwuP_vJG-NA6Ypc-4_moPA2x5eBSCX38ZDo00jn-ohdn4gSfPZdhNJePgxSIUGEWkwSDxvV699B-48255g9KW7RhmIQORh_qmAuYjg01irtJdh5XL3slsCYo9j-nDpnWdjS2mntUDR0sXFjuHK6RDrVNnHKh4tBCoyECuF6wjl7RaTEiGPpBIsR5Bc4SGF4OWD8nQVoNGrjJ1KaI-4ZNLr-zlFJ5VqhCZVkyJIgvetIMlkAKkO29K9MI2MAyJlyrzGHdtfsjZZWWkY8z5x0VWjmaEjW7v-LL9_PYdKtyfcBxezbsofaekLIG--SGyDjY2P2RN8N1mWB-xJMN_LHH9h4W2m8b3fH_6B-VFyqJJ-b6AfKs_xsv54fPneMEJKIhX4JLsSn8sa9zNn_d1OOkYSJsB5gk2UeRTl3vb5_ekpNvpAIwknzakTY_RKUqJzlE8suwIy8hreiLbNsnQskIVjmksmJKBlpiaQ6bIEPYnrb_PD-dTdhK--10AKmsGD1u5yzNYZ1tZ2QpP56bU7wLSn9JHaBtDuFtIZatea9ExpCt36r3iwMrsM5lI9CI4FaPJbBbeOwTrv30eekFTM_cFLF2UJ8T1PxjYE82EPcmMJiW0CWcbbWTzZtUpovZJPZM2VhoUGKrUpqCPgjpabZqoo1UL7t6GtjaScs0oqWWyohl7y61hYB4x3JLmaLPmiIkNktU6vvXkQdK-t0ddR_RtSSlsIysWNWxreXNNJRGuT-lFMm5CUH_8GJ09PAj-2imj5hocWMbIJEyDh0oZ6C2NGSHqI8pE7-yC3YqFosxiYtVBF_w",
+  "permanentLinkUnavailable": null,
+  "permanentUrl": "https://stressproof-6g88.onrender.com/c/sp1.GxMhEZWcswC0OLAbPj9BFa1dqp1af-Yn9BFmxI84znrXzP9V7ZutT4fNUP6QkgosmFPO2dA8NclpPTF9bWvrSV8RZ5CeyAeWwf-5SGkdlq6-IeJXy372CoVFSCzChryEKDQSIek33VPM_hh2CTFOz-7dz0ERU3kcEqEpVBIO4b7VxyokVvAYzTrPRFDC2vYt_yGeo-A_uGQyJjq50sjRZTcTyd5nixyIfk0QTUpmvhpAtMNnUlxzWK_nPUPwIZ21JIDzbNn7-9HvQuGViugwTxfM1NxzuKJVLP93ko_ahB2Hi8EDS-s-S5w_E23sZt-Pa8r9DQDTUoLSzeoy8ADEOHcbdaUKAcyvgmChCvcYAdYGCzT9PqxiSwHsQT45pNXRa6dOtrda4dWLWDDCMst5Iv0yhK3-mKezmM6sYu-NVLqdPWGEHh7ZfL5KVAAOeosbKOxPL0_37AWyV3ZeXZbCaKNIwNnYgx0oAfSqA0V_DOAyjED5SElmmWcnRED4zpHvSHOIAVIqBuqcdhiQQ7vub2_BOwGnhUen-7tfAxASEfhRYDX_f00AkERvXC3QBQJyJXolgLeTy5e7iG7ahIgZtzwqRixk8UogoJT5QUpj21LNEjEY1KyF3cwZWkHaDlFKy_eupwVoDp0oj_Cl_ZgxaSFILPkhWeF4ARnaR587AhnTbhvsqJkTLHR_w-ysEj0yJZ7QrCEGWJzCJvDkyDwzZagMzAxsPBGZfb5cKrUQLokvF1ykvLvw60hK4U6E7Prf-b_Et92SDz89aGhcgyI1SpQCRgufbqld1Chx8sfe4dbxMzaGre7MhbNFTTFt2qnZXEoym9PxVvronWI88_m50WhdeLlYXq0_BN9L_EcAL_cDt6p12CbEiHwahKN-HW_Ge_nSJlomCRJl7edutpKFVq142yz2fRJQVEVF41rBbNTGwLlKARlx8_-9RRNo3P4igPWmKOBKHLIUxQ3f3e7q29aEVcIp4joKkT3k1OTzz4bBqKai2BTmvD1dVv8JNlp1gbj7_ZjP2b46LAwZf2FL5hxNh0frxhRhBllLRxH5wB0urBruwiRZ3RbWK3SkesA4I5TR2SghHmAt6X3FNYiendQSuRFQ7RT-S9PGJ8cgiXMwddCgN3Fz7aRSOxgIsg9kQU8eMaoii13-nWK0RFvpNrhu4qgXKEx3NNdYP-sgBPTD99isqz-8Umo9RC17f08fGOKBEOPIbyiMhxa1H8fq4kw_GYvAlpF-DbFE7Y-4WYcLaPVdQYUN3O_p5fnW_tbGJVVVxouoat3hOQveYrM269aMvlBENKJbMTh5z5TuOytufa-l0zRuhEVul0lm8ZWYiZs4PeSzrHdDSGocKFV08WO-1avJEEaYEE_xDacba8dr53e-zWtlY1Nwy9YpZYVA5gMrZv9EADPyqMMKgiTJFALNFc7elWYgIvfFWDHIw1IwYGYmfDWUqf8MNKmeamKymu9adkCeve239JlSl6FOtgIJ5N4KminqohAG1RUcFHY9ay2oJh0K5b1QUl9VSLp-ER_9w6c9Boke8v9RjOxUvyQoJbQTm5NId5UWZ8G9i1YRIHc9uQP1Uy2qVw6jGiosgk_aZTFg0qb3c2ASKePEqLcJQkA7K4KXXS8FbdWBM3m5Wt4A_GHcFEHGdwVZ-hQ0iGhEiq2S3DXkZRJv8VeAmyYXHH1vKs4m4XLLXiqDpSHFOZzNoKMCQHqfuunIq8JX68Z7n__3HKSmC06rQgVxy9mGKxLfwuP_vJG-NA6Ypc-4_moPA2x5eBSCX38ZDo00jn-ohdn4gSfPZdhNJePgxSIUGEWkwSDxvV699B-48255g9KW7RhmIQORh_qmAuYjg01irtJdh5XL3slsCYo9j-nDpnWdjS2mntUDR0sXFjuHK6RDrVNnHKh4tBCoyECuF6wjl7RaTEiGPpBIsR5Bc4SGF4OWD8nQVoNGrjJ1KaI-4ZNLr-zlFJ5VqhCZVkyJIgvetIMlkAKkO29K9MI2MAyJlyrzGHdtfsjZZWWkY8z5x0VWjmaEjW7v-LL9_PYdKtyfcBxezbsofaekLIG--SGyDjY2P2RN8N1mWB-xJMN_LHH9h4W2m8b3fH_6B-VFyqJJ-b6AfKs_xsv54fPneMEJKIhX4JLsSn8sa9zNn_d1OOkYSJsB5gk2UeRTl3vb5_ekpNvpAIwknzakTY_RKUqJzlE8suwIy8hreiLbNsnQskIVjmksmJKBlpiaQ6bIEPYnrb_PD-dTdhK--10AKmsGD1u5yzNYZ1tZ2QpP56bU7wLSn9JHaBtDuFtIZatea9ExpCt36r3iwMrsM5lI9CI4FaPJbBbeOwTrv30eekFTM_cFLF2UJ8T1PxjYE82EPcmMJiW0CWcbbWTzZtUpovZJPZM2VhoUGKrUpqCPgjpabZqoo1UL7t6GtjaScs0oqWWyohl7y61hYB4x3JLmaLPmiIkNktU6vvXkQdK-t0ddR_RtSSlsIysWNWxreXNNJRGuT-lFMm5CUH_8GJ09PAj-2imj5hocWMbIJEyDh0oZ6C2NGSHqI8pE7-yC3YqFosxiYtVBF_w",
+  "permanentLinkNote": "this link carries the whole report and its signature inside the URL, so it verifies with no help from us. It keeps working after this service restarts, sleeps, redeploys, or shuts down for good. The report id above is only a shortcut while this process happens to still be running."
+}

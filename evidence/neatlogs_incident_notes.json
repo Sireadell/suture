@@ -10,5 +10,5 @@
     "Answer malformed or missing-text bodies with HTTP 400 instead of 200"
   ],
   "applied_on_candidate_branch": "suture-candidate-notes, commit a7fb52b, 10 local tests pass",
-  "signed_stressproof_before_after": "not yet run: StressProof allowlist does not include the notes services"
+  "signed_stressproof_before_after": "83 (1 quiet failure) before, 100 (0 quiet failures) after; see before_notes_v1.json and neatlogs_fix_attempt_1_notes.json"
 }
