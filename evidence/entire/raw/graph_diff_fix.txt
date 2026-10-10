@@ -1,0 +1,5 @@
+$ entire graph diff main suture-candidate --repo .
+Semantic changes HEAD~1..HEAD
+
+No semantic entity changes detected.
+[exit 0]

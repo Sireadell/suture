@@ -1,0 +1,52 @@
+$ entire graph search --query unknown order id falls back to order A1001 in Clerk --repo . --top-k 3 --format text
+LOW CONFIDENCE: top score 18.1 and ranks 1 and 2 are tied (0.0000 apart) - the ranking did not choose. This repo may not contain what you asked for; verify before editing.
+1. targets/clerk/app.py:24-28 score=18.1349 focus=26 signals=path,body,symbol-usage
+
+
+@neatlogs.span(kind="TOOL", tool_name="lookup_order")
+def lookup_order(order_id):
+    return ORDERS.get(order_id, ORDERS[DEFAULT_ORDER])
+
+2. targets/clerk/app.py:42-50 score=18.1349 symbol=handle kind=function focus=49 signals=path,body,symbol-usage,complete-symbol
+def handle(raw_body):
+    try:
+        data = json.loads(raw_body)
+    except Exception:
+        data = {}
+    order_id = data.get("order_id", DEFAULT_ORDER)
+    question = data.get("question", "")
+    order = lookup_order(order_id)
+    return {"order_id": order_id, "answer": write_answer(order, question)}
+
+3. suture/loop.py:71-89 score=14.3939 symbol=build_prompt kind=function focus=82 signals=body,signature,constraint:entity,constraint:phrase,constraint:relationship,graph:callers,complete-symbol
+def build_prompt(source: str, tests: str, evidence: list[dict], feedback: str) -> str:
+    lines = "\n".join(
+        f"- trace {e['trace_id']}: request body {e['raw_body']!r} was answered with {e['answer']}"
+        for e in evidence
+    )
+    return (
+        "You are fixing a small Python web service. Its traces in neatlogs show requests whose body is\n"
+        "not valid JSON, yet the service answered them normally with HTTP 200 and made up an answer:\n"
+        f"{lines}\n\n"
+        "Meaning: the service must refuse bad input clearly (an HTTP 4xx status with a JSON error\n"
+        "message), never answer a bad request with HTTP 200, and keep answering valid requests exactly\n"
+        "as before (valid orders A1001, A1002, A1003 must still get their correct answers).\n"
+        "Keep the same file layout, port handling and tracing setup. Do not add packages.\n"
+        "The existing tests must keep passing.\n\n"
+        f"Current file {SOURCE}:\n{FENCE}python\n{source}\n{FENCE}\n\n"
+        f"Its tests:\n{FENCE}python\n{tests}\n{FENCE}\n{feedback}\n"
+        f"Reply with the COMPLETE replacement for app.py in a single {FENCE}python code block, "
+        "and nothing else."
+    )
+
+VERIFY: python -m py_compile targets/clerk/app.py
+  targets targets/clerk/app.py (from build check only - no runnable test command derivable; this parses the file, it runs no tests) tier=build-check
+  run it ONCE after editing; if it fails, fix the code and re-run THIS command.
+  do not build an alternative test harness, hand-assemble a classpath, or re-verify by
+  reverting and reapplying the edit.
+SAME-CONCEPT LITERAL "ORDERS" — 5 in 4 files repo-wide:
+  evidence/entire/WHERE_THE_BUG_CAME_FROM.md:7 DOC
+  evidence/entire/raw/blame_fix.txt:9 DOC
+  evidence/entire/raw/search_code.txt:33 DOC
+  targets/clerk/app.py:18 EDIT
+[exit 0]

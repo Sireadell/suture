@@ -1,0 +1,85 @@
+$ entire graph checkpoint 01M4KBB9J409096N62BZ6AW98Y --repo .
+Semantic changes 9ffac3e495b86b61bb9849b6186ce87b75707c8e..ac6fbcffeadadc6ba8b33f2c30f2e3010c9fc445
+
+evidence/entire/CHECKPOINTS.md (Markdown)
+  + section Entire-checkpoints-for-Suture added
+  + section Link-and-ID-for-the-submission added
+  + section What-was-checked added
+  + section Checkpoint-count added
+
+evidence/entire/ENTIRE_NOTES.md (Markdown)
+  + section Entire-gaps-and-findings added
+  + section Unclear-in-the-docs added
+
+evidence/entire/WHERE_THE_BUG_CAME_FROM.md (Markdown)
+  + section Where-the-Clerk-bugs-came-from added
+  + section What-Entire-says added
+  + section What-we-can-still-prove-from-other-sources added
+  + section Why-we-did-not-import-the-session added
+  + section How-this-becomes-a-column-in-the-repair-scoreboard added
+
+Warnings
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/activity.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/agent_list.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/blame_clerk_json.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/blame_fix.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/checkpoint_explain.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/checkpoint_list.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/checkpoint_tokens.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/dispatch.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/doctor.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/experts.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/recap.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/repo_list.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/review_help.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/search_clerk.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/search_code.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/search_json_types.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/session_help.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/session_list.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/tokens.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/why_clerk.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+  ! W_UNSUPPORTED_FILE evidence/entire/raw/why_json_linked_line.txt
+    file skipped; no parser for this file type, so its changes are not analyzed
+    head version has no supported parser
+[exit 0]

@@ -1,0 +1,38 @@
+$ entire graph --help
+entire graph adds a deterministic, no-egress code graph to Entire checkpoints.
+
+Usage:
+  entire graph <command> [flags]
+
+Set up your agent:
+  init-agents      Install the coding-agent guide into AGENTS.md/CLAUDE.md
+  agent-guide      Print the coding-agent operating guide
+  index            Build/warm a committed-tree cache variant for matching queries
+  capabilities     List parsed languages, relation types, and features
+
+Inspect the graph:
+  search           Find the code for a task from a plain-language query (start here)
+  neighbors        Who calls this / what does it call (targeted relations)
+  impact           One-shot blast radius for changing a symbol
+  def              What a name IS: declaration, fields, and method surface
+  explain          Resolve symbols named by a failing build or test
+  symbols          Stream every symbol definition (bulk NDJSON)
+  edges            Stream every relation (bulk NDJSON)
+  snapshot         Stream the whole graph: files, symbols, and relations (bulk NDJSON)
+  snapshot-query   Query a compact snapshot without rebuilding the graph
+
+Analyze changes & more:
+  commit           Entity-level change list for a commit vs its first parent
+  diff             Entity-level change list between two refs
+  checkpoint       Analyze the commit behind an Entire-Checkpoint trailer
+  verify           Run a test command and return an adjudicated verdict, not test output
+  stats            Human report: graph usage vs grep/read, and estimated token savings
+
+Help & diagnostics:
+  help             Show this command listing
+  doctor           Diagnose the environment and confirm no-egress
+  version          Print the plugin version (and provider name with --json)
+
+Use "entire graph <command> --help" for details on a command.
+For coding agents: run "entire graph agent-guide" or "entire graph init-agents".
+[exit 0]

@@ -1,0 +1,5 @@
+$ entire graph init-agents --repo .
+wrote C:\Users\DELL\suture\.entire\graph-agent.md
+updated C:\Users\DELL\suture\AGENTS.md
+updated C:\Users\DELL\suture\CLAUDE.md
+[exit 0]

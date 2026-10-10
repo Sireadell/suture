@@ -1,0 +1,22 @@
+$ entire graph impact --symbol lookup_order --repo .
+Index: cache-miss (664ms) | Query: 2ms | Total: 667ms
+Impact: lookup_order (targets/clerk/app.py:27) def=27 span=27-28 [function]
+Blast radius: 6 callers (1 direct, 5 transitive), 0 callees, 0 type consumers, 0 data flows, 0 co-change files, 0 siblings.
+Callers (1 direct, 5 transitive; who breaks if behavior changes):
+- handle (targets/clerk/app.py:49, def :42)
+- Handler.do_POST (targets/clerk/app.py:68, def :65) [via handle]
+- ask (targets/clerk/test_clerk.py:7, def :6) [via handle]
+- ask (targets/notes/test_notes.py:7, def :6) [via handle]
+- ask (targets/quote/test_quote.py:7, def :6) [via handle]
+- ask (targets/triage/test_triage.py:7, def :6) [via handle]
+Callees (0; what it depends on):
+- none
+Type consumers (0 in, 0 out; USES_TYPE/PARAM_TYPE/RETURNS_TYPE):
+- none
+Data flows (0 in, 0 out):
+- none
+Co-change coupling (0; files that historically change with targets/clerk/app.py):
+- none
+Same-container siblings (0):
+- none
+[exit 0]
