@@ -1,6 +1,7 @@
 """Reads the target's failures and the run's cost back from neatlogs through its command line tool.
 The login is read-only, so nothing here writes to neatlogs."""
 import json
+import os
 import shutil
 import subprocess
 from datetime import datetime, timedelta, timezone
@@ -9,7 +10,9 @@ CLI = shutil.which("neatlogs") or "neatlogs"
 
 
 def run(*args: str) -> dict:
-    out = subprocess.run([CLI, *args, "--json"], capture_output=True, text=True, timeout=120)
+    # The CLI uses its own saved login; the tracing key in the environment would confuse it.
+    env = {k: v for k, v in os.environ.items() if not k.startswith("NEATLOGS_")}
+    out = subprocess.run([CLI, *args, "--json"], capture_output=True, text=True, timeout=120, env=env)
     if out.returncode != 0:
         raise RuntimeError(f"neatlogs {' '.join(args[:2])}: {(out.stdout + out.stderr)[:300]}")
     return json.loads(out.stdout)["data"]
