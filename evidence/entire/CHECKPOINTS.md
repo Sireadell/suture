@@ -29,13 +29,9 @@ Raw output for the CLI side is in `raw/` (checkpoint_list.txt, checkpoint_explai
 
 Per the hackathon page, a reviewer should open repository, branch, commit, checkpoint, then Sessions (the request and decisions) and Changes (the implementation).
 
-## Checkpoint count
+## Checkpoint count (main, 2026-10-10 21:15 local)
 
-
-
-## Checkpoint count (main, 2026-10-10 17:50 local)
-
-`entire checkpoint list` shows 3. All three are on GitHub as `refs/entire/checkpoints/*`.
+`entire checkpoint list` shows 18, full list in `raw/checkpoint_list.txt`. The three below were the first ones and are the safest to cite.
 
 | Checkpoint ID | Commit | Made by |
 | --- | --- | --- |
@@ -43,4 +39,4 @@ Per the hackathon page, a reviewer should open repository, branch, commit, check
 | `01M4KB8MCKS30FV86Y9QJJFBQB` | 9ffac3e, Add second neatlogs-written fix for Clerk | the neatlogs session |
 | `01M4KBB9J409096N62BZ6AW98Y` | ac6fbcf, Add the checkpoint link, where the Clerk bugs came from, and Entire command output | this Entire session. Its commit page returns 200 at https://entire.io/gh/Sireadell/suture/commit/ac6fbcf... (use the full SHA from `git rev-parse ac6fbcf`) |
 
-Any of the three works as the submission pair. Pick the one whose session the story is about: `01M4K70B7PHXAKFTC5KK8NGABZ` is a run-the-loop session, `01M4KBB9J409096N62BZ6AW98Y` is the Entire work.
+Any of these three works as the submission pair. Pick the one whose session the story is about: `01M4K70B7PHXAKFTC5KK8NGABZ` is a run-the-loop session, `01M4KBB9J409096N62BZ6AW98Y` is the Entire work.

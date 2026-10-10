@@ -1,8 +1,57 @@
-$ entire checkpoint list
   branch       main
-  checkpoints  1
+  checkpoints  18
+
+● 01M4KPZWG49DFJ1FZ4VT549QTW  Add clerk2 as a repair target and save its Entire provenance
+  10-10 21:10 (27aa3df) Add clerk2 as a repair target and save its Entire provenance
+
+● 01M4KPV065SEHQQ4NAPYQD2H2A  Add Clerk2, a refund-lookup agent with tests
+  10-10 21:07 (5b59b0e) Add Clerk2, a refund-lookup agent with tests
+
+● 01M4KPPH59RE37FC12Z7KW0Q3R  Remove scratch note
+  10-10 21:05 (3533b30) Remove scratch note
+
+● 01M4KPNM8XVT9KRKYVNB678YWA  "Background (from the session that started this one):\nneat..."
+  10-10 21:04 (6194adf) Add scratch note
+
+● 01M4KHXQ6ZC1SXKKWKEE41KX70  "<cross-session-message from=\"local_fef4abba-ced1-4858-aca..."
+  10-10 19:41 (fbef8bd) Record second attempt at the Clerk alert and the Detections page error
+
+● 01M4KGPK0AVVGYE448W9FRVQGZ  "<cross-session-message from=\"local_fef4abba-ced1-4858-aca..."
+  10-10 19:20 (060a016) Note that the neatlogs public API has no read operation for incidents
+
+● 01M4KGJG8R3KYHV7EPB42C9M28  Add neatlogs before and after scores for Clerk, plus more...
+  10-10 19:17 (d53525f) Add neatlogs before and after scores for Clerk, plus more neatlogs gaps found
+
+● 01M4KG7KKSBGYJ6CZHQKPEXS2J  Add cfo.ai run log for Suture
+  10-10 19:12 (9d29fe0) Add cfo.ai run log for Suture
+
+● 01M4KEYQ39TNR4AXG2ZEYZP562  Record the neatlogs incident and recommended fix for notes
+  10-10 18:49 (403298c) Record the neatlogs incident and recommended fix for notes
+
+● 01M4KDG0C4FY5CWXGSGEAC21HM  Trace build sessions with the neatlogs Claude Code plugin...
+  10-10 18:24 (c009073) Trace build sessions with the neatlogs Claude Code plugin; add neatlogs compl...
+
+● 01M4KD7YNZTCGFXQ3791DKVM3V  Make the repair loop take a target name (clerk or notes) ...
+  10-10 18:19 (968abe4) Make the repair loop take a target name (clerk or notes) and add the notes ch...
+
+● 01M4KD66EZXM0TKDGMF8MQ3Z73  Add cfo.ai plan for Suture
+  10-10 18:18 (bc1ef1e) Add cfo.ai plan for Suture
+
+● 01M4KCKET65WEBKFN50DE0WQHZ  "<cross-session-message from=\"local_fef4abba-ced1-4858-aca..."
+  10-10 18:08 (bc3dc1e) Set up the project memory and add notes on using it for the Clerk bug
+
+● 01M4KC7KRQSKQBJT2GNETNT43F  "<cross-session-message from=\"local_fef4abba-ced1-4858-aca..."
+  10-10 18:02 (015c0eb) Turn on the code graph and add notes on using it for the Clerk bug
+
+● 01M4KBFHCSMN5T8JEFS9X68N9W  Record the checkpoint count and a multi-session attributi...
+  10-10 17:48 (65dc831) Record the checkpoint count and a multi-session attribution note
+
+● 01M4KBB9J409096N62BZ6AW98Y  Add the checkpoint link, where the Clerk bugs came from, ...
+  10-10 17:46 (ac6fbcf) Add the checkpoint link, where the Clerk bugs came from, and Entire command o...
+
+● 01M4KB8MCKS30FV86Y9QJJFBQB  "Background (from the session that started this one):\nneat..."
+  10-10 17:45 (9ffac3e) Add second neatlogs-written fix for Clerk: 100, no quiet failures
 
 ● 01M4K70B7PHXAKFTC5KK8NGABZ  "Background (from the session that started this one):\nneat..."
   10-10 16:30 (9699aae) Add notes target prerequisites to the build log
 
-[exit 0]
