@@ -1,6 +1,8 @@
 import json
 
-from app import handle
+import pytest
+
+from app import BadRequest, handle
 
 
 def ask(order_id, question):
@@ -46,3 +48,9 @@ def test_unknown_order_is_not_answered_as_another_order():
     out = ask("ZZ-FAKE-1", "Where is my refund?")
     assert "could not find" in out["answer"]
     assert "approved" not in out["answer"]
+
+
+@pytest.mark.parametrize("body", ["{not json", "", "[1, 2]", '"text"'])
+def test_malformed_body_is_refused(body):
+    with pytest.raises(BadRequest):
+        handle(body)
