@@ -37,7 +37,8 @@ Pending. Demo video (max 3:00) not yet recorded. Reproduce the proven run with t
 - neatlogs Fixes is not used: the CLI has no Fixes command, and the GitHub connection for this project did not work. After installing the neatlogs GitHub app, the callback address https://ingest.neatlogs.com/api/github/app/callback/user is rejected by GitHub ("redirect_uri is not associated with this application"), so the project's repo field stays empty and no Fixes item is raised. The neatlogs MCP answers with our key (whoami shows an empty project_repo, triage_list shows 0 items). The detection "Clerk wrong answer" does flag the bad traces.
 - The neatlogs login is read-only, so the verdict cannot be written back.
 - One target is fully proven. The other targets are built but not yet run.
-- Entire checkpoints: none recorded yet. Pending.
+- Entire checkpoints: recording from this commit on.
+- Next target to run is notes. It needs two public services (the agent and a patched copy) and a place on the StressProof allowlist first; the repair loop is still set up for Clerk only.
 - Next: run the other targets, record the demo, post the build log.
 
 ## Submission
