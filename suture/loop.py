@@ -280,8 +280,11 @@ def main() -> None:
     finally:
         tracing.stop()
     snapshot()
-    time.sleep(20)  # let neatlogs finish ingesting this run before reading its cost back
-    card["neatlogs_cost"] = neatlogs_cli.run_cost("suture", started)
+    for _ in range(6):  # neatlogs takes a while to ingest a finished run; wait for it before reading cost
+        time.sleep(30)
+        card["neatlogs_cost"] = neatlogs_cli.run_cost("suture", started)
+        if card["neatlogs_cost"]["model_calls"]:
+            break
     write_scorecard(card)
     print(json.dumps({k: v for k, v in card.items() if k != "attempt_log"}, indent=2))
 
