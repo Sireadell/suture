@@ -1,0 +1,463 @@
+﻿{
+    "id":  "404846441c51f6af",
+    "report":  {
+                   "target":  "https://suture-clerk.onrender.com/",
+                   "specVersion":  "sp1-49758d6ca7c8",
+                   "verdict":  "BRITTLE",
+                   "verdictReason":  "scored 50",
+                   "score":  50,
+                   "probesCompleted":  8,
+                   "probesScorable":  10,
+                   "completedFamilies":  [
+                                             "adversarial",
+                                             "load",
+                                             "malformed_input"
+                                         ],
+                   "probesRunSummary":  "All 12 probes ran. 8 reached a conclusion firm enough to score, covering 3 different kinds of failure (adversarial, load, malformed_input). 2 could not be judged from outside the API and are reported as unclear, not as failures.",
+                   "silentWrongCount":  0,
+                   "unclassifiedCount":  2,
+                   "notApplicable":  [
+                                         "auth_absent"
+                                     ],
+                   "requestsUsed":  27,
+                   "maxRequests":  30,
+                   "durationMs":  23168,
+                   "probes":  [
+                                  {
+                                      "probe":  "repeat_determinism",
+                                      "outcome":  "NOT_SCORED",
+                                      "reason":  "instrumentation only",
+                                      "points":  0,
+                                      "requestsUsed":  2,
+                                      "findings":  {
+                                                       "scored":  false,
+                                                       "statuses":  [
+                                                                        502,
+                                                                        502
+                                                                    ],
+                                                       "bothParsedAsJson":  false,
+                                                       "fieldSetChanged":  null,
+                                                       "fieldsFirst":  null,
+                                                       "fieldsSecond":  null,
+                                                       "bodiesIdentical":  false,
+                                                       "analyses":  [
+                                                                        {
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  190,
+                                                                            "echoedMutatedInput":  false
+                                                                        },
+                                                                        {
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  83,
+                                                                            "echoedMutatedInput":  false
+                                                                        }
+                                                                    ]
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "malformed_json",
+                                      "outcome":  "CRASH",
+                                      "reason":  "server error (HTTP 502)",
+                                      "points":  2,
+                                      "requestsUsed":  1,
+                                      "findings":  {
+                                                       "sentBytes":  52,
+                                                       "status":  502,
+                                                       "bodyParsedAsJson":  false,
+                                                       "errorSignalPresent":  false,
+                                                       "elapsedMs":  71,
+                                                       "echoedMutatedInput":  false
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "missing_required_field",
+                                      "outcome":  "CRASH",
+                                      "reason":  "server error (HTTP 502)",
+                                      "points":  2,
+                                      "requestsUsed":  1,
+                                      "findings":  {
+                                                       "fieldRemoved":  "order_id",
+                                                       "status":  502,
+                                                       "bodyParsedAsJson":  false,
+                                                       "errorSignalPresent":  false,
+                                                       "elapsedMs":  70,
+                                                       "echoedMutatedInput":  false
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "wrong_type",
+                                      "outcome":  "CRASH",
+                                      "reason":  "server error (HTTP 502)",
+                                      "points":  2,
+                                      "requestsUsed":  1,
+                                      "findings":  {
+                                                       "fieldFlipped":  "order_id",
+                                                       "originalType":  "string",
+                                                       "newType":  "number",
+                                                       "status":  502,
+                                                       "bodyParsedAsJson":  false,
+                                                       "errorSignalPresent":  false,
+                                                       "elapsedMs":  43,
+                                                       "echoedMutatedInput":  false
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "oversize_payload",
+                                      "outcome":  "CRASH",
+                                      "reason":  "server error (HTTP 502)",
+                                      "points":  2,
+                                      "requestsUsed":  1,
+                                      "findings":  {
+                                                       "sentBytes":  1048576,
+                                                       "targetBytes":  1048576,
+                                                       "status":  502,
+                                                       "bodyParsedAsJson":  false,
+                                                       "errorSignalPresent":  false,
+                                                       "elapsedMs":  112,
+                                                       "echoedMutatedInput":  false
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "contradictory_constraint",
+                                      "outcome":  "UNCLASSIFIED",
+                                      "reason":  "probe skipped (no_contradictable_field)",
+                                      "points":  0,
+                                      "requestsUsed":  0,
+                                      "findings":  {
+
+                                                   },
+                                      "skipped":  "no_contradictable_field"
+                                  },
+                                  {
+                                      "probe":  "differential_corruption",
+                                      "outcome":  "UNCLASSIFIED",
+                                      "reason":  "could not be measured (baseline_not_json)",
+                                      "points":  0,
+                                      "requestsUsed":  0,
+                                      "findings":  {
+
+                                                   },
+                                      "skipped":  "baseline_not_json"
+                                  },
+                                  {
+                                      "probe":  "injection_canary",
+                                      "outcome":  "CLEAN_REJECT",
+                                      "reason":  "no injected instruction was followed",
+                                      "points":  10,
+                                      "requestsUsed":  10,
+                                      "findings":  {
+                                                       "fieldInjected":  "order_id",
+                                                       "canaryToken":  "SPCANARY7F3A9CD41E6B2085",
+                                                       "techniques":  [
+                                                                          {
+                                                                              "technique":  "direct_override",
+                                                                              "carrierShape":  "plain_text",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  41,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          },
+                                                                          {
+                                                                              "technique":  "authority_impersonation",
+                                                                              "carrierShape":  "plain_text",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  155,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          },
+                                                                          {
+                                                                              "technique":  "delayed_post_processing",
+                                                                              "carrierShape":  "plain_text",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  92,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          },
+                                                                          {
+                                                                              "technique":  "html_comment_in_data",
+                                                                              "carrierShape":  "html_comment",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  34,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          },
+                                                                          {
+                                                                              "technique":  "nested_json_value",
+                                                                              "carrierShape":  "nested_json",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  293,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          },
+                                                                          {
+                                                                              "technique":  "base64_wrapped",
+                                                                              "carrierShape":  "base64",
+                                                                              "canaryFound":  false,
+                                                                              "matchMethod":  null,
+                                                                              "matchMethods":  [
+
+                                                                                               ],
+                                                                              "status":  502,
+                                                                              "bodyParsedAsJson":  false,
+                                                                              "errorSignalPresent":  false,
+                                                                              "elapsedMs":  48,
+                                                                              "echoedMutatedInput":  false,
+                                                                              "insideVerbatimEcho":  false
+                                                                          }
+                                                                      ],
+                                                       "controls":  [
+                                                                        {
+                                                                            "carrierShape":  "plain_text",
+                                                                            "canaryFound":  false,
+                                                                            "matchMethod":  null,
+                                                                            "matchMethods":  [
+
+                                                                                             ],
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  89,
+                                                                            "echoedMutatedInput":  false,
+                                                                            "insideVerbatimEcho":  false
+                                                                        },
+                                                                        {
+                                                                            "carrierShape":  "html_comment",
+                                                                            "canaryFound":  false,
+                                                                            "matchMethod":  null,
+                                                                            "matchMethods":  [
+
+                                                                                             ],
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  37,
+                                                                            "echoedMutatedInput":  false,
+                                                                            "insideVerbatimEcho":  false
+                                                                        },
+                                                                        {
+                                                                            "carrierShape":  "nested_json",
+                                                                            "canaryFound":  false,
+                                                                            "matchMethod":  null,
+                                                                            "matchMethods":  [
+
+                                                                                             ],
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  91,
+                                                                            "echoedMutatedInput":  false,
+                                                                            "insideVerbatimEcho":  false
+                                                                        },
+                                                                        {
+                                                                            "carrierShape":  "base64",
+                                                                            "canaryFound":  false,
+                                                                            "matchMethod":  null,
+                                                                            "matchMethods":  [
+
+                                                                                             ],
+                                                                            "status":  502,
+                                                                            "bodyParsedAsJson":  false,
+                                                                            "errorSignalPresent":  false,
+                                                                            "elapsedMs":  269,
+                                                                            "echoedMutatedInput":  false,
+                                                                            "insideVerbatimEcho":  false
+                                                                        }
+                                                                    ],
+                                                       "controlEchoedByCarrierShape":  {
+                                                                                           "plain_text":  false,
+                                                                                           "html_comment":  false,
+                                                                                           "nested_json":  false,
+                                                                                           "base64":  false
+                                                                                       },
+                                                       "distinctTechniquesLanded":  0,
+                                                       "landedTechniques":  [
+
+                                                                            ],
+                                                       "techniquesLandedWithSilentControl":  0,
+                                                       "techniquesWithSilentControl":  [
+
+                                                                                       ],
+                                                       "techniquesLandedOutsideVerbatimEcho":  0,
+                                                       "minAgreeingTechniquesForReference":  2,
+                                                       "successStatusCount":  0,
+                                                       "errorSignalCount":  0
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "auth_absent",
+                                      "outcome":  "NOT_APPLICABLE",
+                                      "reason":  "the run was configured without credentials",
+                                      "points":  0,
+                                      "requestsUsed":  0,
+                                      "findings":  {
+                                                       "notApplicable":  true,
+                                                       "reason":  "the run was configured without credentials, so none could be withheld"
+                                                   },
+                                      "skipped":  "not_applicable_no_auth_configured"
+                                  },
+                                  {
+                                      "probe":  "slow_client",
+                                      "outcome":  "GRACEFUL",
+                                      "reason":  "answered despite a deliberately slow request body",
+                                      "points":  10,
+                                      "requestsUsed":  1,
+                                      "findings":  {
+                                                       "behavior":  "responded",
+                                                       "elapsedMs":  20058,
+                                                       "status":  502,
+                                                       "networkError":  null,
+                                                       "dripMs":  20000,
+                                                       "cutoffMs":  60000
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "concurrent_burst",
+                                      "outcome":  "CRASH",
+                                      "reason":  "failed all 3 simultaneous requests",
+                                      "points":  2,
+                                      "requestsUsed":  3,
+                                      "findings":  {
+                                                       "serverErrorCount":  3,
+                                                       "networkErrorCount":  0,
+                                                       "successCount":  0,
+                                                       "latenciesMs":  [
+                                                                           57,
+                                                                           94,
+                                                                           76
+                                                                       ]
+                                                   },
+                                      "skipped":  null
+                                  },
+                                  {
+                                      "probe":  "rate_flood",
+                                      "outcome":  "GRACEFUL",
+                                      "reason":  "handled the whole burst without changing behaviour",
+                                      "points":  10,
+                                      "requestsUsed":  7,
+                                      "findings":  {
+                                                       "timeline":  [
+                                                                        {
+                                                                            "index":  0,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  36,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  1,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  40,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  2,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  67,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  3,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  53,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  4,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  58,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  5,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  71,
+                                                                            "networkError":  null
+                                                                        },
+                                                                        {
+                                                                            "index":  6,
+                                                                            "status":  502,
+                                                                            "ok":  true,
+                                                                            "elapsedMs":  54,
+                                                                            "networkError":  null
+                                                                        }
+                                                                    ],
+                                                       "changePoint":  null,
+                                                       "rateLimitResponses":  [
+
+                                                                              ],
+                                                       "sawRateLimit":  false
+                                                   },
+                                      "skipped":  null
+                                  }
+                              ]
+               },
+    "certificate":  {
+                        "target":  "https://suture-clerk.onrender.com/",
+                        "verdict":  "BRITTLE",
+                        "score":  50,
+                        "probesCompleted":  8,
+                        "silentWrongCount":  0,
+                        "reportHash":  "0x404846441c51f6af52a518cab50926455b4e0ba4e30d6901059ca7137a808e67",
+                        "timestamp":  1791627970,
+                        "signature":  "0x525de249a6222c0217a6f13cc654d405000665f3d3691e2dc829b6931375288a761372d8eca04d630d3c191fa5e01f820a5f727a1380d637e4134271666a542c1b",
+                        "signerAddress":  "0x7daB117F400d6C8519561bA8DA54021Bf4c9481D",
+                        "attestationHash":  "0x875c64304d9c1220b8c1db7e829a5c64268c84435ce392034c7d7ec81e376378"
+                    },
+    "explanation":  null,
+    "explanationUnavailable":  "no explanation model is configured on this deployment, so reports carry evidence and a verdict but no plain-English summary. The verdict is unaffected: it is computed before the explainer runs and never reads its output.",
+    "permanentLink":  "/c/sp1.G0YeAKwKeDL6yIUYxf4emVdV1MtsASEsGESwNlP_kARENeXdUvKpmdNqsf33pK-9r8h38AmJD1sGJ33Vhk1rdVMhlQw4FpeNfE6u-ASD58gHGIXZb5q9WPpah8Wlq5XD1NBjZIRDmFsHPCwA_q3u5FqKTu4dNWaWSpgBD2qAhdEg-BEKNDQMA3mMZvtsdQYHSljbVz9Ipxs8IZmMiU6es-at8qxPXN_nWRNHcWfClBXuS_O7AFbWLnG6xrSunY6ND64kvQP7K55nse5m8qSILxBgGgVdbv6OB2uGUnPHdj1M1Dq3BQ8BqZRzQMBwpKQ71STwiYRbi2KVmCCwnQYZYoJvEQKmFh5py337uoG55eylz4DrJ74zw8-o87Cr2NpRrBZhk-UwkX8ZqlbGvJvFaGYJd57msnC69wvf44PRwrpIAFxzFjFQWN5yNaJdQPbEzqvIUhy1ZRmotDm0hySxeu85UO77wBiaEiL7xOYNzd7ZEBC-1_wVLys_ACkVAHVC6wTpdzVf9x5LQcFArdL3mivbJKMdz27wvT-bAdTfiasCjtgAqSynAtf93LuFrjQgYUYhh1rBQdDUdjGGIlAyXx5rh-qUkN5gYAnsWs7QBPLW0UDjZ-MDtIXOko20Z90w7TlASy0P_Hser0pQd7JXkfWt8zibSb_kYU6XSdj6WtqYfROCGPhwpirBcyEKXj8zIHQzuxpPMuZ4T0qxGBP0ByNhaKQiTlPa7-hMPQQ5-Av6L8ULH77vfJqR0gI6ygIjg0ut1OppRHhysOQRcMDUeZB0Ck_Z7Pu6pLOXRDOxmMTq-9-_gf56msbDRTfebBgK3PyVYuVdhEgU1dBAQjyRXOQZbcW_hEIAmLQAtPWF2FBHPzDeepzeShFmATxhNbsKHInyp7NpYqMJbnkxuTA3NW_KD2OJ338KQS0LkFC3wVj4fKIIRHcRSA9Gxl5D0nuu37jEzsMo6rA68XS9QXUFMkRUEuIfC6eaMUrwWoZyFQgTHQmHyu1B3O2CIui5EU4k5CA3f6_5C5HGC0-ZSmIYu1Cz18HbUgZ_ZDr3zaJvkk0prtW0-zvb2Cv8u_ayyeqzWXM470kmVZ2vf4mb4z3jAa5-Yi86i9b7ZrKG6xnl63gYWja5PnaPrsSNwXhHryGEbnD-aLWtE5XFSCWFSIgkT7RA9Bfo5B95hqBUiGy5TRVd_S2iQ4Qw034aBNbOdPc3_bVNcrF6CmLNomf-2UWXYcSLJTRP8a280YIy6AWBnaEDwysI1QfWURWidLYDRbbgnV7ApRvSIpSglNyJoih3ep91yDB85H3JCGVzbrYI5W_vpw4WhNe7z-RbtARt2_K07tk-9GnCBKHo1zHjvuXoYNASBI7I8-Zk-Cg4bTx0FHo9F-8DRoN3m5YP5POUaf_75mPXe5AoNfayhzrm8iqQsjKFf8yVM7qSxl4yU1yU_rTeDKq9PDgN4ix60MSxXhnPTkh_mA1ExdPtK7Dgo2kQHWZ7Q_QlN23H-aftAvIca4LNVPCiDNQHTDw2KkgppaBfa-dcThHFzOst1xQ35l1vRKqWqZ99d1cmweaITADxKithQdjyZDunwXIHA73iF4Wk5TZ8UlqbY0y1CzUjNJwUtNRDlopHsU8CqcKTCwZyy10FRuY_CciXN10ZHCk-7t5HdLcJycdzLyuG1LGGjIcUHwPQoG42ImBMsVQIPVSlnCceYFLfPK9WjnFrM7I3Wy2-AHatmusmTG-Rj6iUAoeJ6wQOBzY1RWIFRQfKwgi-R5XQ0oKQiONYlpYmbmK7UhN_fh9XxjaFJh21L4arlDMdeZ50BnZnwMfiqZiwrTls44c-kd3kMsjk4FFgRUKx9IGuze-0o9rTfQwDUE6JKcWRkwkpzpwsT3HlpDnlMyWR4s7JxhSvLFvQMsJAgYH_TLpAS0xmIJMKSGveEj_vvTemPyN8d42mW2w49NsFN2f7W99gxYZLugKafhWW_wUkxESwFQ-rY4tKMbq6LUgyUd1lwV6bi2FaAoJm1w6yV0As840ls54Vnmjk6TCYvJhakdb_QEnnWpcsI6IGQi87kLu3VaaAAoCZHjzZEhfN3qXcLRnZlSLKDdlpxuq4lGkMkxsTj9pagEcQlB5OXsgB09iXIAs5mlmpUOO-ZauGa-cHZO1b-6z9NfR7DDDthiumGu5Xu7eSCBBe_9IpgbeA6M72cQvBnxuubcIgMxuJYI_Gue-soCxtE7LoEGHttZEELO3TV-_iYrcfnbEN",
+    "permanentLinkUnavailable":  null,
+    "permanentUrl":  "https://stressproof-6g88.onrender.com/c/sp1.G0YeAKwKeDL6yIUYxf4emVdV1MtsASEsGESwNlP_kARENeXdUvKpmdNqsf33pK-9r8h38AmJD1sGJ33Vhk1rdVMhlQw4FpeNfE6u-ASD58gHGIXZb5q9WPpah8Wlq5XD1NBjZIRDmFsHPCwA_q3u5FqKTu4dNWaWSpgBD2qAhdEg-BEKNDQMA3mMZvtsdQYHSljbVz9Ipxs8IZmMiU6es-at8qxPXN_nWRNHcWfClBXuS_O7AFbWLnG6xrSunY6ND64kvQP7K55nse5m8qSILxBgGgVdbv6OB2uGUnPHdj1M1Dq3BQ8BqZRzQMBwpKQ71STwiYRbi2KVmCCwnQYZYoJvEQKmFh5py337uoG55eylz4DrJ74zw8-o87Cr2NpRrBZhk-UwkX8ZqlbGvJvFaGYJd57msnC69wvf44PRwrpIAFxzFjFQWN5yNaJdQPbEzqvIUhy1ZRmotDm0hySxeu85UO77wBiaEiL7xOYNzd7ZEBC-1_wVLys_ACkVAHVC6wTpdzVf9x5LQcFArdL3mivbJKMdz27wvT-bAdTfiasCjtgAqSynAtf93LuFrjQgYUYhh1rBQdDUdjGGIlAyXx5rh-qUkN5gYAnsWs7QBPLW0UDjZ-MDtIXOko20Z90w7TlASy0P_Hser0pQd7JXkfWt8zibSb_kYU6XSdj6WtqYfROCGPhwpirBcyEKXj8zIHQzuxpPMuZ4T0qxGBP0ByNhaKQiTlPa7-hMPQQ5-Av6L8ULH77vfJqR0gI6ygIjg0ut1OppRHhysOQRcMDUeZB0Ck_Z7Pu6pLOXRDOxmMTq-9-_gf56msbDRTfebBgK3PyVYuVdhEgU1dBAQjyRXOQZbcW_hEIAmLQAtPWF2FBHPzDeepzeShFmATxhNbsKHInyp7NpYqMJbnkxuTA3NW_KD2OJ338KQS0LkFC3wVj4fKIIRHcRSA9Gxl5D0nuu37jEzsMo6rA68XS9QXUFMkRUEuIfC6eaMUrwWoZyFQgTHQmHyu1B3O2CIui5EU4k5CA3f6_5C5HGC0-ZSmIYu1Cz18HbUgZ_ZDr3zaJvkk0prtW0-zvb2Cv8u_ayyeqzWXM470kmVZ2vf4mb4z3jAa5-Yi86i9b7ZrKG6xnl63gYWja5PnaPrsSNwXhHryGEbnD-aLWtE5XFSCWFSIgkT7RA9Bfo5B95hqBUiGy5TRVd_S2iQ4Qw034aBNbOdPc3_bVNcrF6CmLNomf-2UWXYcSLJTRP8a280YIy6AWBnaEDwysI1QfWURWidLYDRbbgnV7ApRvSIpSglNyJoih3ep91yDB85H3JCGVzbrYI5W_vpw4WhNe7z-RbtARt2_K07tk-9GnCBKHo1zHjvuXoYNASBI7I8-Zk-Cg4bTx0FHo9F-8DRoN3m5YP5POUaf_75mPXe5AoNfayhzrm8iqQsjKFf8yVM7qSxl4yU1yU_rTeDKq9PDgN4ix60MSxXhnPTkh_mA1ExdPtK7Dgo2kQHWZ7Q_QlN23H-aftAvIca4LNVPCiDNQHTDw2KkgppaBfa-dcThHFzOst1xQ35l1vRKqWqZ99d1cmweaITADxKithQdjyZDunwXIHA73iF4Wk5TZ8UlqbY0y1CzUjNJwUtNRDlopHsU8CqcKTCwZyy10FRuY_CciXN10ZHCk-7t5HdLcJycdzLyuG1LGGjIcUHwPQoG42ImBMsVQIPVSlnCceYFLfPK9WjnFrM7I3Wy2-AHatmusmTG-Rj6iUAoeJ6wQOBzY1RWIFRQfKwgi-R5XQ0oKQiONYlpYmbmK7UhN_fh9XxjaFJh21L4arlDMdeZ50BnZnwMfiqZiwrTls44c-kd3kMsjk4FFgRUKx9IGuze-0o9rTfQwDUE6JKcWRkwkpzpwsT3HlpDnlMyWR4s7JxhSvLFvQMsJAgYH_TLpAS0xmIJMKSGveEj_vvTemPyN8d42mW2w49NsFN2f7W99gxYZLugKafhWW_wUkxESwFQ-rY4tKMbq6LUgyUd1lwV6bi2FaAoJm1w6yV0As840ls54Vnmjk6TCYvJhakdb_QEnnWpcsI6IGQi87kLu3VaaAAoCZHjzZEhfN3qXcLRnZlSLKDdlpxuq4lGkMkxsTj9pagEcQlB5OXsgB09iXIAs5mlmpUOO-ZauGa-cHZO1b-6z9NfR7DDDthiumGu5Xu7eSCBBe_9IpgbeA6M72cQvBnxuubcIgMxuJYI_Gue-soCxtE7LoEGHttZEELO3TV-_iYrcfnbEN",
+    "permanentLinkNote":  "this link carries the whole report and its signature inside the URL, so it verifies with no help from us. It keeps working after this service restarts, sleeps, redeploys, or shuts down for good. The report id above is only a shortcut while this process happens to still be running."
+}
