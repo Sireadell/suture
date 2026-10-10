@@ -31,4 +31,16 @@ Per the hackathon page, a reviewer should open repository, branch, commit, check
 
 ## Checkpoint count
 
-See the table at the bottom of this file, updated at the end of the session.
+
+
+## Checkpoint count (main, 2026-10-10 17:50 local)
+
+`entire checkpoint list` shows 3. All three are on GitHub as `refs/entire/checkpoints/*`.
+
+| Checkpoint ID | Commit | Made by |
+| --- | --- | --- |
+| `01M4K70B7PHXAKFTC5KK8NGABZ` | 9699aae, Add notes target prerequisites to the build log | the first checkpoint run (use this one for the submission, its page was verified logged out) |
+| `01M4KB8MCKS30FV86Y9QJJFBQB` | 9ffac3e, Add second neatlogs-written fix for Clerk | the neatlogs session |
+| `01M4KBB9J409096N62BZ6AW98Y` | ac6fbcf, Add the checkpoint link, where the Clerk bugs came from, and Entire command output | this Entire session. Its commit page returns 200 at https://entire.io/gh/Sireadell/suture/commit/ac6fbcf... (use the full SHA from `git rev-parse ac6fbcf`) |
+
+Any of the three works as the submission pair. Pick the one whose session the story is about: `01M4K70B7PHXAKFTC5KK8NGABZ` is a run-the-loop session, `01M4KBB9J409096N62BZ6AW98Y` is the Entire work.
