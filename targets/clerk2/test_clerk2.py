@@ -18,3 +18,18 @@ def test_pending_refund():
 
 def test_not_eligible_refund():
     assert "not eligible" in ask("A1003")
+
+
+import pytest
+
+from app import BadRequestError
+
+
+@pytest.mark.parametrize("body", ["{garbage", "", "[1, 2", "[]", json.dumps({"question": "hi"}), json.dumps({"order_id": {"a": 1}})])
+def test_bad_body_is_refused(body):
+    with pytest.raises(BadRequestError):
+        handle(body)
+
+
+def test_unknown_order_is_not_found():
+    assert "could not be found" in ask("ZZ-FAKE-3")
