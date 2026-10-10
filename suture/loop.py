@@ -40,6 +40,16 @@ TARGETS = {
         "test_file": "test_notes.py",
         "commit_message": "Stop notes obeying instructions hidden in text and cap very long text",
     },
+    "clerk2": {
+        "live_url": "https://suture-clerk2.onrender.com",
+        "candidate_url": "https://suture-clerk2-candidate.onrender.com",
+        "candidate_service": "srv-db59mdd9fdbs73c3f6hg",
+        "candidate_branch": "suture-candidate-clerk2",
+        "baseline": "before_clerk2_v1.json",
+        "sample_body": None,
+        "test_file": "test_clerk2.py",
+        "commit_message": "Refuse bad requests and unknown orders with a clear error",
+    },
 }
 T = dict(TARGETS["clerk"])  # selected in main(); defaults keep the Clerk run unchanged
 NAME = "clerk"
