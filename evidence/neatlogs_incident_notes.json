@@ -1,0 +1,14 @@
+{
+  "target": "notes",
+  "raised_by": "neatlogs Investigate (dashboard chat, 'Audit notes workflow security')",
+  "incident": "https://app.neatlogs.com/triage/4759f0ad-b4b9-4701-a7e0-a1cfb3506863",
+  "title": "Notes workflow accepts malformed input and obeys hidden instructions",
+  "severity": "High",
+  "recommended_fix_from_neatlogs": [
+    "Remove the 'ignore previous instructions' check in summarise so hidden text is only summarised",
+    "Add a length limit on the input text",
+    "Answer malformed or missing-text bodies with HTTP 400 instead of 200"
+  ],
+  "applied_on_candidate_branch": "suture-candidate-notes, commit a7fb52b, 10 local tests pass",
+  "signed_stressproof_before_after": "not yet run: StressProof allowlist does not include the notes services"
+}
