@@ -8,3 +8,10 @@ Notice from the founder: the session "neathack 10-12 oct" (local_fef4abba-ced1-4
 StressProof is redeployed and now accepts clerk2, so continue the full flow.
 The env change alone did not restart it; I triggered a deploy (status live) and a test call to /demo/certify for suture-clerk2 returned a report (score 50, BRITTLE), so no more 403. Run the before run properly, the neatlogs Investigate fix, the after run, then entire blame/why/experts on the failure and fix lines. Push and report before and after scores, honestly.
 </cross-session-message>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Option (a), but use Claude in Chrome (the founder's own logged-in Chrome), not playwright.
+The earlier neatlogs session drove neatlogs Investigate through the mcp__claude-in-chrome__* tools (already signed in to app.neatlogs.com), so no password is needed. Load them with ToolSearch, open a fresh tab, go to the neatlogs chats tab (Investigate), ask it to investigate workflow clerk2 (the four 500 crashes: malformed_json, missing_required_field, wrong_type, differential_corruption), let it raise the incident and write the fix, then apply it. Never type or import a password or cookies. If Chrome tabs hang, close and open a fresh tab. Do not skip Investigate: neatlogs must write the fix. Push the before evidence now.
+</cross-session-message>
