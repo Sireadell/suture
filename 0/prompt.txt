@@ -1,0 +1,16 @@
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Smart App Control is now off, so please retry Entire Graph and Brain.
+The user turned off Windows Smart App Control themselves. Retry the Graph and Brain steps that were blocked, record exact commands and results in evidence/entire/, commit and push, then report in one line what worked and what still fails.
+</cross-session-message>
+
+---
+
+<task-notification>
+<task-id>byscq83nh</task-id>
+<tool-use-id>toolu_01TkH6jVTEFWLXit7FLrSctJ</tool-use-id>
+<output-file>C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\tasks\byscq83nh.output</output-file>
+<status>completed</status>
+<summary>Monitor "wait for brain plugin install" stream ended</summary>
+<event>entire-graph.exe</event>
+If this event is something the user would act on now, send a PushNotification. Routine or benign output doesn't need one.
+</task-notification>

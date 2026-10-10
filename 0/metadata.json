@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KC7KRQSKQBJT2GNETNT43F",
+  "session_id": "03274a7b-2845-45cf-9b65-64ca88e23157",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T17:02:12.3995185Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "2203394bc66a",
+  "checkpoint_transcript_start": 401,
+  "transcript_lines_at_start": 401,
+  "compact_transcript_start": 51,
+  "token_usage": {
+    "input_tokens": 36,
+    "cache_creation_tokens": 14287,
+    "cache_read_tokens": 3328831,
+    "output_tokens": 7736,
+    "api_call_count": 18
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 300,
+      "user_lines_removed": 101,
+      "agent_lines_added": 139,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".claude/settings.json": 250,
+        "evidence/neatlogs_eval_replies_after.json": 50
+      },
+      "user_removed_per_file": {
+        ".claude/settings.json": 101
+      }
+    }
+  ]
+}
