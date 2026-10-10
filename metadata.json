@@ -1,0 +1,31 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KPZWG49DFJ1FZ4VT549QTW",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "evidence/entire/CLERK2_PROVENANCE.md",
+    "evidence/entire/clerk2/blame_clerk2.txt",
+    "evidence/entire/clerk2/experts.txt",
+    "evidence/entire/clerk2/why_handle.txt",
+    "evidence/entire/clerk2/why_lookup_order.txt",
+    "suture/loop.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 3912,
+    "cache_read_tokens": 521474,
+    "output_tokens": 2998,
+    "api_call_count": 5
+  }
+}
