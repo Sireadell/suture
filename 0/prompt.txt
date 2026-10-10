@@ -1,0 +1,17 @@
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Update from the coordinator: neatlogs-cli 0.2.1 is now published and I installed it globally (neatlogs --version prints 0.2.1). It has `neatlogs incidents publish` (POST /api/v1/public/incidents/external, publish a scoped incident snapshot as a service account). A neatlogs person told the founder incidents are readable on the API and CLI, not the MCP. In the public API schema (neatlogs schema search incident, triage, fix, run, suggestion) I found NO operation that lists or gets an incident or its fix, only that publish POST. Our CLI login has only project:read. Please: (1) check the 0.2.1 docs/schema for any read operation for incidents; (2) record this in evidence/NEATLOGS_COMPLAINTS.md with the exact question for neatlogs: which operation lists or gets an incident and its fix, and what scope does the token need; (3) continue your task list.
+</cross-session-message>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Please explain exactly why the Alert and the public trace share links failed.
+For each one give: the exact page or call you tried, the exact error or what was missing, whether it is a neatlogs bug, a permission or plan limit, or something we did wrong, and one workaround if any. Check NEATLOGS_COMPLAINTS.md has both entries. Reply in plain words, one short table, no em dashes.
+</cross-session-message>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Please retry creating the neatlogs Alert in a clean browser tab, using the docs' own route.
+Docs (Alerts page) say: open the Detection and create the alert rule from it. Steps: close old neatlogs tabs, open a fresh tab (try the other browser too if one is available, but never import or copy the user's logins or cookies), reload the Detections page, open "Clerk wrong answer" (id 3aa4f0bb-5cbe-44eb-9209-ea68f0398c4c) and create a Per-event alert from there, severity critical, cooldown 15 min, in-app notification as destination. Also try with a hard reload and the project selector re-chosen, in case "Couldn't load detections" is a stale project. Note: the API route is also gated by the deployment switch public-api-mutations, so the dashboard is the best path. If it works, screenshot it, save under evidence/, update NEATLOGS_COMPLAINTS.md (mark g2 resolved or keep it, with the new details), commit and push. If it still fails, record exactly what you tried. Reply in plain words, one short table, no em dashes.
+</cross-session-message>
