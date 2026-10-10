@@ -4,6 +4,7 @@ import json
 import os
 import shutil
 import subprocess
+import time
 from datetime import datetime, timedelta, timezone
 
 CLI = shutil.which("neatlogs") or "neatlogs"
@@ -12,10 +13,17 @@ CLI = shutil.which("neatlogs") or "neatlogs"
 def run(*args: str) -> dict:
     # The CLI uses its own saved login; the tracing key in the environment would confuse it.
     env = {k: v for k, v in os.environ.items() if not k.startswith("NEATLOGS_")}
-    out = subprocess.run([CLI, *args, "--json"], capture_output=True, text=True, timeout=120, env=env)
-    if out.returncode != 0:
-        raise RuntimeError(f"neatlogs {' '.join(args[:2])}: {(out.stdout + out.stderr)[:300]}")
-    return json.loads(out.stdout)["data"]
+    for attempt in range(4):  # the service sometimes times out; wait and try again
+        try:
+            out = subprocess.run([CLI, *args, "--json"], capture_output=True, text=True, timeout=120, env=env)
+        except subprocess.TimeoutExpired:
+            out = None
+        if out and out.returncode == 0:
+            return json.loads(out.stdout)["data"]
+        if attempt == 3:
+            detail = (out.stdout + out.stderr)[:300] if out else "timed out"
+            raise RuntimeError(f"neatlogs {' '.join(args[:2])}: {detail}")
+        time.sleep(5 * (attempt + 1))
 
 
 def iso(ts: float) -> str:

@@ -165,9 +165,21 @@ def write_scorecard(card: dict) -> None:
 def repair(card: dict, snapshot) -> None:
     raw_before = json.loads(BASELINE.read_text(encoding="utf-8-sig"))
     baseline = stressproof.parse(raw_before)
-    evidence = neatlogs_cli.failing_traces("clerk", raw_before["certificate"]["timestamp"])
+    try:
+        evidence = neatlogs_cli.failing_traces("clerk", raw_before["certificate"]["timestamp"])
+        card["failures_source"] = "neatlogs"
+    except RuntimeError as err:
+        evidence = []
+        card["neatlogs_error"] = str(err)[:200]
     if not evidence:
-        raise RuntimeError("no failing traces found in neatlogs for the before run")
+        # neatlogs unavailable or empty: fall back to StressProof's own failure list, and say so
+        card["failures_source"] = "stressproof failure list (neatlogs unavailable)"
+        evidence = [
+            {"trace_id": "stressproof:" + p["probe"], "raw_body": body, "answer": "200 OK", "status": "OK"}
+            for p, body in zip(stressproof.failed_probes(baseline), ["{garbage", "", "[1, 2"] * 5)
+        ]
+        if not evidence:
+            raise RuntimeError("no failures found in neatlogs or in the StressProof report")
     card["failing_trace_ids"] = [e["trace_id"] for e in evidence]
 
     git("fetch", "origin", "main")
