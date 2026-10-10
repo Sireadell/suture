@@ -1,0 +1,59 @@
+$ entire brain setup --no-backfill --no-daemon
+setup: instant core (deterministic, no agent tokens)
+refresh: locate brain
+refresh: locate brain: gh/sireadell/suture done
+refresh: export sessions
+refresh: export sessions: detecting default branch
+refresh: export sessions: mapping checkpoint branches
+refresh: export sessions: reading checkpoint authors
+refresh: export sessions: reading local checkpoint stores
+refresh: export sessions: 5/5 checkpoints, 3 sessions done
+refresh: seed baseline
+refresh: seed baseline failed
+setup: instant core: session export
+refresh: history index
+refresh: history index: 3/3 sessions scanned
+refresh: history index: 0 records, 0 decisions, 0 tool calls done
+setup: instant core: seed baseline
+refresh: doc index
+refresh: doc index: 0 chunks / 0 files done
+setup: instant core: history index
+refresh: check semantic index
+refresh: semantic index
+refresh: semantic index failed
+setup: instant core: doc index
+refresh: pattern layer
+setup: instant core: semantic index
+refreshed brain: C:\Users\DELL\AppData\Local\entire\plugins\data\brain\repos\gh\sireadell\suture
+setup: instant core: pattern layer
+setup: instant core: entity index
+setup: instant core: memory coordinator
+setup: instant core ready in 19.2s -- built sessions, history, docs, patterns, entities, memory; FAILED seed, semantic; the brain is queryable now done
+setup: seed baseline failed (dirty_worktree: refusing to seed uncommitted content without --worktree) -- continuing; run 'entire brain doctor' for detail
+setup: hint: commit or stash the working tree, then re-run `entire brain setup`; `entire enable` writes .entire/ and .claude/ without committing them, which is what a first run usually trips over
+setup: semantic index failed (dirty_worktree: refusing to index uncommitted content without --worktree) -- continuing; run 'entire brain doctor' for detail
+setup: hint: commit or stash the working tree, then re-run `entire brain setup`; `entire enable` writes .entire/ and .claude/ without committing them, which is what a first run usually trips over
+setup: fact backfill (--no-backfill) skipped
+setup: workspace registration
+setup: workspace "default" now tracks gh/sireadell/suture done
+setup: background watcher (--no-daemon) skipped
+setup: session-end hook already wired (C:\Users\DELL\suture\.claude\settings.json) skipped
+
+Brain ready (degraded) in 19.3s
+  repo        C:\Users\DELL\suture  (gh/sireadell/suture)
+  brain       C:\Users\DELL\AppData\Local\entire\plugins\data\brain\repos\gh\sireadell\suture
+  instant     + sessions  x seed  + history  + docs  x semantic  + patterns  + entities  + memory  (19.2s)
+              x seed baseline: dirty_worktree: refusing to seed uncommitted content without --worktree
+                hint: commit or stash the working tree, then re-run `entire brain setup`; `entire enable` writes .entire/ and .claude/ without committing them, which is what a first run usually trips over
+              x semantic index: dirty_worktree: refusing to index uncommitted content without --worktree
+                hint: commit or stash the working tree, then re-run `entire brain setup`; `entire enable` writes .entire/ and .claude/ without committing them, which is what a first run usually trips over
+  facts       .............. 0/3 sessions distilled
+  backfill    - skipped (--no-backfill)  (0s)
+  workspace   + default  (20ms)
+  daemon      - skipped: --no-daemon  (0s)
+
+Next
+  entire brain overview        what this project is
+  entire brain brief "<task>"  task-shaped context
+  entire brain status          backfill progress and daemon health
+[exit 0]

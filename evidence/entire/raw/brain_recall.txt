@@ -1,0 +1,2 @@
+fact:50577421a0ff1ce1e42db6c3 gotcha [architecture.clerk.fallback]
+  Clerk's first draft falls back to order A1001 for an unknown order id and answers every request 200. Suture repairs both. The file was written outside this repo before Entire recorded sessions here, so no checkpoint links to its commit fa43b7d.

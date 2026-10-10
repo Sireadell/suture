@@ -1,0 +1,3 @@
+$ entire brain setup --no-backfill --no-daemon --worktree
+unknown flag: --worktree
+[exit 1]

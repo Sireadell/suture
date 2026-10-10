@@ -1,0 +1,3 @@
+$ entire brain remember ... --kind gotcha --path architecture.clerk.fallback
+remembered fact:50577421a0ff1ce1e42db6c3 [gotcha] architecture.clerk.fallback on main
+[exit 0]

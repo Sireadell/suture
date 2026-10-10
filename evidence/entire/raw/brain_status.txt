@@ -1,0 +1,34 @@
+$ entire brain status --verbose
+Brain
+  path: C:\Users\DELL\AppData\Local\entire\plugins\data\brain\repos\gh\sireadell\suture
+  repo: C:\Users\DELL\suture (key gh/sireadell/suture)
+  manifest: current (schema 3; supported 3)
+  generated: 2026-10-10T17:04:56Z
+  sources: seed=false sessions=true semantic=false history=true facts=false docs=true
+
+Onboarding
+  facts: 0/3 sessions distilled (3 pending)
+  daemon: not supported on windows yet (no launchd or systemd)
+  instant: sessions=built seed=failed docs=built semantic=failed history=built patterns=built entities=built memory=built
+    a component failed — run `entire brain doctor` for the reason
+
+Retrieval
+  docs: 0 records from 0 files (generated 2026-10-10T17:04:35Z)
+  conversation: 0 exchanges, vectors disabled
+  freshness: unsafe
+    docs: unsafe (docs index provenance cannot be checked without a seed source)
+    seed: missing (no seed source in manifest; run entire brain refresh --agent none)
+
+Live
+  branch: main
+  head: 015c0eb358c1c6235069a25ea3a7d6e7d48448cb
+  dirty: true
+  diff: 1 file changed, 149 insertions(+)
+  unstaged: .claude/settings.json
+  untracked: .playwright-mcp/page-2026-10-10T16-33-06-033Z.yml
+  untracked: evidence/entire/raw/brain_setup.txt
+  untracked: evidence/entire/raw/brain_setup_worktree.txt
+  untracked: evidence/entire/raw/brain_status.txt
+  untracked: evidence/neatlogs_eval_replies_after.json
+  untracked: evidence/neatlogs_eval_replies_before.json
+[exit 0]

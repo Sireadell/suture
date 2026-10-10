@@ -1,0 +1,14 @@
+# History Coverage
+
+- Total commits: 20
+- Pre-session commits: 15
+- Covered (checkpoint trailer, at or after oldest session): 4
+- Missing session coverage after oldest session: 1
+- Commits with no session history available: 0
+- Merge commits: 0
+- Oldest exported session: `2026-10-10T15:30:51Z`
+- Exported checkpoints known to manifest: 2
+
+## Commits Needing Fallback Context
+
+- `6a598c312c7c` `2026-10-10T16:19:49Z` Add signed run for the fix neatlogs wrote for Clerk (refused, one quiet failure left) [missing_session]

@@ -1,0 +1,5 @@
+$ (clean clone) entire brain init-agents
+wrote C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\scratchpad\cleanclone\.entire\agent-guide.md
+updated C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\scratchpad\cleanclone\AGENTS.md
+updated C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\scratchpad\cleanclone\CLAUDE.md
+[exit 0]

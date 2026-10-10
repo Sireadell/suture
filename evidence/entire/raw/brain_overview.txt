@@ -1,0 +1,7 @@
+$ (clean clone) entire brain overview
+repo: C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\scratchpad\cleanclone (gh/sireadell/suture)
+freshness: ok — all axes current
+semantic: 41 files, 786 symbols, 1754 relations
+boundaries: routes=0 tools=0 workflows=0
+key documents: AGENTS.md, CLAUDE.md, README.md
+[exit 0]

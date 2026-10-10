@@ -31,6 +31,10 @@ Commands run with Entire CLI 0.11.4 (output in `raw/why_clerk.txt`, `raw/blame_c
 
 So the honest answer today is: session `fef4abba`, commit `fa43b7d`, no checkpoint. Entire names the commit and author, and knows the session, but cannot connect the two.
 
+## Graph and Brain on the same question
+
+See GRAPH_AND_BRAIN.md. `entire graph search` points at lines 24-28 and 42-50, `entire graph impact` sizes the change (6 callers), and `entire brain` reports 15 of 20 commits as made before any captured session, which is where Clerk's commit sits. Brain now also holds a saved fact explaining the gap.
+
 ## Why we did not import the session
 
 `entire import claude-code --path <hackathons folder> --session fef4abba-... --dry-run` says it would import 314 turns as read-only checkpoints. That would make them searchable and explainable, but they would not be linked to `fa43b7d`, and that session also holds unrelated hackathon work and a key the founder pasted into chat. Checkpoints in this public repo are public. Founder decision, not made here.
