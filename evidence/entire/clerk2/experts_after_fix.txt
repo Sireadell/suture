@@ -1,0 +1,7 @@
+Agent provenance for Sireadell/suture (main)
+
+Claude Code
+  evidence: 1 sessions, 1 matching checkpoints, 11 steps, 290 agent-attributed lines
+  tools: shell (6)
+  files: targets/clerk2/app.py, targets/clerk2/requirements.txt, targets/clerk2/test_clerk2.py
+  - Add Clerk2 Agent with Full Provenance - 1 checkpoints, 11 steps

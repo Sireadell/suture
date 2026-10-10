@@ -1,0 +1,14 @@
+{
+  "target": "clerk2",
+  "raised_by": "neatlogs Investigate (dashboard chat, 'Clerk2 workflow error investigation', chat d024718c-9abb-42f5-a31c-58e0642e9cd4)",
+  "incident": "clerk2 refund-lookup agent crashes with HTTP 500 on invalid or unknown inputs (Critical, Bug, Open). The chat gave no incident id or link; it filed the issue on the Issues board.",
+  "root_causes_from_neatlogs": [
+    "Malformed JSON: json.loads error bubbles up to do_POST and becomes a 500",
+    "Missing order_id: lookup returns None and write_answer indexes it",
+    "Wrong type for order_id: an object cannot be used as a dictionary key",
+    "Unknown order id: lookup returns None and write_answer indexes it"
+  ],
+  "fix_written_by": "neatlogs (full replacement app.py in the chat); applied unchanged in logic as commit 04fd54d on branch suture-candidate-clerk2, plus 7 extra tests",
+  "signed_stressproof_before_after": "64 (PARTIAL, 0 quiet failures, 4 loud crashes) before, 100 (RESILIENT, 0 quiet failures) after; see before_clerk2_v1.json and after_clerk2_v2.json",
+  "keep_rule": "score up and quiet failures 0: passed"
+}

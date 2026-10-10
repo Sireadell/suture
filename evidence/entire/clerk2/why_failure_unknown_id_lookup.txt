@@ -1,0 +1,8 @@
+
+  Line 21 in targets/clerk2/app.py
+      return ORDERS.get(order_id)
+
+  [AI] by Claude Code · claude-sonnet-5-5 · checkpoint 01M4KPV065SEHQQ4NAPYQD2H2A · session 84b136d5 · commit 5b59b0e6
+
+  Full context: entire checkpoint explain 01M4KPV065SEHQQ4NAPYQD2H2A
+
