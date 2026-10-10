@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4KG7KKSBGYJ6CZHQKPEXS2J",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "evidence/cfo/6_run_log_ari_summary.jpg",
+    "evidence/cfo/7_run_log_page.jpg",
+    "evidence/cfo/CFO_PLAN.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 118,
+    "cache_creation_tokens": 75149,
+    "cache_read_tokens": 18866241,
+    "output_tokens": 21974,
+    "api_call_count": 59
+  }
+}
