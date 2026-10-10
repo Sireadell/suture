@@ -40,10 +40,9 @@ def write_answer(order, question):
 
 @neatlogs.span(kind="WORKFLOW")
 def handle(raw_body):
-    try:
-        data = json.loads(raw_body)
-    except Exception:
-        data = {}
+    data = json.loads(raw_body)
+    if not isinstance(data, dict):
+        raise ValueError("JSON body must be an object")
     order_id = data.get("order_id", DEFAULT_ORDER)
     question = data.get("question", "")
     order = lookup_order(order_id)
@@ -65,7 +64,10 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         length = int(self.headers.get("content-length") or 0)
         raw = self.rfile.read(length).decode("utf-8", errors="replace")
-        self._send(200, handle(raw))
+        try:
+            self._send(200, handle(raw))
+        except (json.JSONDecodeError, ValueError) as err:
+            self._send(400, {"error": "Invalid JSON", "detail": str(err)})
 
     def log_message(self, *args):
         pass
