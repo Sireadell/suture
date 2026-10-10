@@ -1,0 +1,8 @@
+$ entire checkpoint list
+  branch       main
+  checkpoints  1
+
+● 01M4K70B7PHXAKFTC5KK8NGABZ  "Background (from the session that started this one):\nneat..."
+  10-10 16:30 (9699aae) Add notes target prerequisites to the build log
+
+[exit 0]

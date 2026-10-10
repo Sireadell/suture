@@ -1,0 +1,288 @@
+$ entire search Clerk order fallback
+{
+  "results": [
+    {
+      "type": "commit",
+      "data": {
+        "id": "a88cddeea9cca6c521e08a21b9ae0f7045214901",
+        "commitSha": "a88cddeea9cca6c521e08a21b9ae0f7045214901",
+        "commitMessage": "Clerk: say the order was not found instead of answering with order A1001",
+        "commitSubject": "Clerk: say the order was not found instead of answering with order A1001",
+        "branch": "suture-candidate",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T16:14:01.000Z",
+        "additions": 9,
+        "deletions": 1,
+        "filesChanged": 2,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 20.89260625475901,
+        "tier": 1,
+        "rerankScore": 0.75750744,
+        "bm25Score": 18.994263,
+        "annScore": 0.5152836
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "887923ee631bc48b52cc3a9b55a5b9715c2ae576",
+        "commitSha": "887923ee631bc48b52cc3a9b55a5b9715c2ae576",
+        "commitMessage": "Add first StressProof reports for Clerk",
+        "commitSubject": "Add first StressProof reports for Clerk",
+        "branch": "main",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T10:28:46.000Z",
+        "additions": 978,
+        "deletions": 0,
+        "filesChanged": 2,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 5.414911000594957,
+        "tier": 1,
+        "rerankScore": 0.32560632,
+        "bm25Score": 4.926481,
+        "annScore": 0.663275
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "b5752e0ba8e201a09adc18ac5387964cbc1bcba9",
+        "commitSha": "b5752e0ba8e201a09adc18ac5387964cbc1bcba9",
+        "commitMessage": "Add signed after report and scorecard for Clerk fix\n\nCo-Authored-By: Claude Sonnet 5.5 \u003cnoreply@anthropic.com\u003e",
+        "commitSubject": "Add signed after report and scorecard for Clerk fix",
+        "branch": "main",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T11:45:26.000Z",
+        "additions": 1033,
+        "deletions": 0,
+        "filesChanged": 3,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 4.870927603642673,
+        "tier": 1,
+        "rerankScore": 0.3053658,
+        "bm25Score": 4.43085,
+        "annScore": 0.69121003
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "f6ea922cb9d5eed429f48ad7767c4683501471d0",
+        "commitSha": "f6ea922cb9d5eed429f48ad7767c4683501471d0",
+        "commitMessage": "Reject bad requests with a clear error instead of answering 200",
+        "commitSubject": "Reject bad requests with a clear error instead of answering 200",
+        "branch": "suture-candidate",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T12:28:37.000Z",
+        "additions": 59,
+        "deletions": 5,
+        "filesChanged": 2,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 3.144390758216386,
+        "tier": 1,
+        "rerankScore": 0.2491548,
+        "bm25Score": 2.8600419,
+        "annScore": 0.7201493
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "b5408ba183f82a494a58b2ba7de22b626ac054f8",
+        "commitSha": "b5408ba183f82a494a58b2ba7de22b626ac054f8",
+        "commitMessage": "Reject bad requests with a clear error instead of answering 200",
+        "commitSubject": "Reject bad requests with a clear error instead of answering 200",
+        "branch": "suture-candidate",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T11:42:56.000Z",
+        "additions": 24,
+        "deletions": 4,
+        "filesChanged": 1,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 2.859518850350326,
+        "tier": 1,
+        "rerankScore": 0.2491548,
+        "bm25Score": 2.6011813,
+        "annScore": 0.704093
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "6c356322a97f070cae4a65a0172af28b65fe95ec",
+        "commitSha": "6c356322a97f070cae4a65a0172af28b65fe95ec",
+        "commitMessage": "Reject bad requests with a clear error instead of answering 200",
+        "commitSubject": "Reject bad requests with a clear error instead of answering 200",
+        "branch": "suture-candidate",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T11:31:05.000Z",
+        "additions": 21,
+        "deletions": 4,
+        "filesChanged": 1,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 2.5686083115517024,
+        "tier": 1,
+        "rerankScore": 0.2491548,
+        "bm25Score": 2.3366108,
+        "annScore": 0.72171307
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "49afc30b0197fddbda03fe4998095f12d5b53898",
+        "commitSha": "49afc30b0197fddbda03fe4998095f12d5b53898",
+        "commitMessage": "Reject bad requests with a clear error instead of answering 200",
+        "commitSubject": "Reject bad requests with a clear error instead of answering 200",
+        "branch": "suture-candidate",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T11:23:49.000Z",
+        "additions": 22,
+        "deletions": 3,
+        "filesChanged": 1,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 2.5685690074502103,
+        "tier": 1,
+        "rerankScore": 0.2491548,
+        "bm25Score": 2.3366108,
+        "annScore": 0.72132933
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "0a38ae8cf8b46861a6faf3da07305e5a394a3d78",
+        "commitSha": "0a38ae8cf8b46861a6faf3da07305e5a394a3d78",
+        "commitMessage": "Add second signed run: Clerk fix scores 100 with no quiet failures\n\nCo-Authored-By: Claude Sonnet 5.5 \u003cnoreply@anthropic.com\u003e",
+        "commitSubject": "Add second signed run: Clerk fix scores 100 with no quiet failures",
+        "branch": "main",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T12:49:48.000Z",
+        "additions": 139,
+        "deletions": 119,
+        "filesChanged": 4,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 4.232820415539053,
+        "tier": 1,
+        "rerankScore": 0.24335462,
+        "bm25Score": 3.8498726,
+        "annScore": 0.6971234
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "fa43b7da30928249f2085f2a62614b8f1b65d0e7",
+        "commitSha": "fa43b7da30928249f2085f2a62614b8f1b65d0e7",
+        "commitMessage": "Add Clerk, a small refund-lookup agent with tests",
+        "commitSubject": "Add Clerk, a small refund-lookup agent with tests",
+        "branch": "main",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T10:07:05.000Z",
+        "additions": 115,
+        "deletions": 0,
+        "filesChanged": 3,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 8.313013110688068,
+        "tier": 1,
+        "rerankScore": 0.2404891,
+        "bm25Score": 7.563517,
+        "annScore": 0.63052726
+      }
+    },
+    {
+      "type": "commit",
+      "data": {
+        "id": "6a598c312c7c817408999331783f2f780b086504",
+        "commitSha": "6a598c312c7c817408999331783f2f780b086504",
+        "commitMessage": "Add signed run for the fix neatlogs wrote for Clerk (refused, one quiet failure left)",
+        "commitSubject": "Add signed run for the fix neatlogs wrote for Clerk (refused, one quiet failure left)",
+        "branch": "main",
+        "org": "Sireadell",
+        "repo": "suture",
+        "author": "Sireadell",
+        "authorUsername": "Sireadell",
+        "createdAt": "2026-10-10T16:19:49.000Z",
+        "additions": 580,
+        "deletions": 0,
+        "filesChanged": 1,
+        "htmlUrl": null
+      },
+      "searchMeta": {
+        "matchType": "both",
+        "score": 3.8942773012935947,
+        "tier": 1,
+        "rerankScore": 0.23482752,
+        "bm25Score": 3.5403924,
+        "annScore": 0.67333984
+      }
+    }
+  ],
+  "total": 11,
+  "page": 1,
+  "total_pages": 2,
+  "limit": 10,
+  "counts": {
+    "repos": 0,
+    "checkpoints": 0,
+    "commits": 10,
+    "prs": 0,
+    "sessions": 1
+  },
+  "reranked": true
+}
+[exit 0]

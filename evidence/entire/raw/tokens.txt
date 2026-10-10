@@ -1,0 +1,25 @@
+$ entire tokens
+Analyze token usage across sessions and checkpoints.
+
+Commands:
+  profile  Aggregate token usage across committed checkpoints
+
+Examples:
+  entire tokens profile
+  entire tokens profile --json
+
+Usage:
+  entire tokens [flags]
+  entire tokens [command]
+
+Available Commands:
+  profile     Aggregate token usage and recommendations across checkpoint history
+
+Flags:
+  -h, --help   help for tokens
+
+Global Flags:
+      --context name   Act as this saved login name for this command only — including the git and agent processes it spawns — instead of the active context (entire auth contexts lists them)
+
+Use "entire tokens [command] --help" for more information about a command.
+[exit 0]

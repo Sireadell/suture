@@ -1,0 +1,9 @@
+$ entire why targets/clerk/app.py:47
+
+  Line 47 in targets/clerk/app.py
+      order_id = data.get("order_id", DEFAULT_ORDER)
+
+  Written by Sireadell · commit fa43b7da · 2026-10-10
+  No Entire checkpoint is linked to the commit that last touched this line.
+
+[exit 0]

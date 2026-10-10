@@ -1,0 +1,3 @@
+$ entire repo list
+required flag(s) "project" not set
+[exit 1]

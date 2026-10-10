@@ -1,0 +1,12 @@
+{
+  "line_number": 32,
+  "tag": "[AI]",
+  "authorship": "ai",
+  "commit_sha": "9699aaefe605297591e5b4a22550d126d8cbce6e",
+  "checkpoint_id": "01M4K70B7PHXAKFTC5KK8NGABZ",
+  "session_id": "51a6ab9f-ea4e-4632-82d8-7a87f1fac0b7",
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "file": "hackathon.md",
+  "prompt_first_line": "Background (from the session that started this one):"
+}

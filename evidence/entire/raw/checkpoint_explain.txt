@@ -1,0 +1,17 @@
+$ entire checkpoint explain 01M4K70B7PHXAKFTC5KK8NGABZ --short
+● Checkpoint 01M4K70B7PHXAKFTC5KK8NGABZ
+  session  51a6ab9f-ea4e-4632-82d8-7a87f1fac0b7
+  created  2026-10-10 15:30:51
+  author   Sireadell <120798535+Sireadell@users.noreply.github.com>
+  tokens   650.6k
+  commits  9699aae Add notes target prerequisites to the build log
+────────────────────────────────────────────────────────────
+## Intent
+
+Background (from the session that started this one):
+neatHack entry Suture (g...
+
+## Summary
+
+*Not generated yet. Run ‘entire checkpoint explain --generate 01M4K70B7PHXAKFTC5KK8NGABZ‘ to create an AI summary.*
+[exit 0]

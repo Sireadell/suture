@@ -1,0 +1,17 @@
+$ entire checkpoint tokens 01M4K70B7PHXAKFTC5KK8NGABZ
+Checkpoint tokens
+
+Checkpoint: 01M4K70B7PHXAKFTC5KK8NGABZ
+Session:    51a6ab9f-ea4e-4632-82d8-7a87f1fac0b7
+Agent:      Claude Code
+Model:      claude-sonnet-5-5
+Branch:     main
+
+Token usage
+Total:  650.6k tokens
+  Input: 14 | Cache read: 597.6k | Cache write: 50.5k | Output: 2.5k | API calls: 7
+
+Recommendations
+- Cache/context replay is 91.8% of token volume; reduce unnecessary follow-up calls in this large-context session.
+- Cache write is elevated; avoid broad new context and narrow the next read before continuing.
+[exit 0]

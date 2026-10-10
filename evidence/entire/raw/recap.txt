@@ -1,0 +1,31 @@
+$ entire recap
+[day] · week · month · 90d        agent: [all]        view: you team [both]
+
+╭────────────────────────────────────────────────────────────────────────────╮
+│  Today                                                                     │
+│  window Oct 10, 2026 00:00 WAT - Oct 11, 2026 00:00 WAT                    │
+│                                                                            │
+│  you   1 session     1 checkpoint     2k tok                               │
+│  team  1 session     1 checkpoint     2k tok                               │
+│                                                                            │
+│  top  Claude Code                                                          │
+│                                                                            │
+│  1 agent · repo Sireadell/suture · 1 active day                            │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+Activity · day                                         most active: 2026-10-10
+░█
+
+╭─ Agents · today ───────────────────────────────────────────────────────────╮
+│                                        you ███   team ▒                    │
+│                                                                            │
+│  Claude Code                                                               │
+│    tokens       ████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 2k / 2k                   │
+│    sessions     ████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 1 / 1                     │
+│    checkpoints  ████████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ 1 / 1                     │
+│    team tool mix  shell 67% · fileOps 33%                                  │
+│    your tool mix  shell 67% · fileOps 33%                                  │
+╰────────────────────────────────────────────────────────────────────────────╯
+
+  ℹ Labels require server analysis (may take a few minutes after committing).
+[exit 0]

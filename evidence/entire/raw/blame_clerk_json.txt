@@ -1,0 +1,10 @@
+$ bash -c entire blame targets/clerk/app.py --line 23-47 --long | head -8
+
+  targets/clerk/app.py
+
+  Line  Tag   Agent         Model               Author            Checkpoint/Session    Content
+  ─────────────────────────────────────────────────────────────────────────────────────────────
+    23  [HU]                                    Sireadell                               DEFAULT_ORDER = "A1001"
+    24  [HU]                                    Sireadell                               
+    25  [HU]                                    Sireadell                               
+[exit 0]

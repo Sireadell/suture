@@ -1,0 +1,11 @@
+$ entire agent list
+Agents:
+    antigravity
+  ✓ claude-code
+    codex
+    copilot-cli
+    cursor
+    factoryai-droid
+    opencode
+    pi
+[exit 0]

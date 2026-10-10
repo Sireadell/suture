@@ -1,0 +1,14 @@
+$ bash -c git show a88cdde --stat --format="%h %s" | head -5; entire why targets/clerk/app.py:28
+a88cdde Clerk: say the order was not found instead of answering with order A1001
+
+ targets/clerk/app.py        | 4 +++-
+ targets/clerk/test_clerk.py | 6 ++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+  Line 28 in targets/clerk/app.py
+      return ORDERS.get(order_id, ORDERS[DEFAULT_ORDER])
+
+  Written by Sireadell · commit fa43b7da · 2026-10-10
+  No Entire checkpoint is linked to the commit that last touched this line.
+
+[exit 0]

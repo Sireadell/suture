@@ -1,0 +1,75 @@
+$ entire search --code DEFAULT_ORDER
+{
+  "query": "DEFAULT_ORDER",
+  "results": [
+    {
+      "repo": "gh/Sireadell/suture",
+      "path": "targets/clerk/app.py",
+      "line": 23,
+      "column": 0,
+      "context_before": [
+        "    \"A1002\": {\"item\": \"Backpack\", \"paid\": 89.00, \"refund\": \"pending review\", \"days\": None},",
+        "    \"A1003\": {\"item\": \"Headphones\", \"paid\": 120.00, \"refund\": \"not eligible, past 30 days\", \"days\": None},",
+        "}"
+      ],
+      "context_line": "DEFAULT_ORDER = \"A1001\"",
+      "context_after": [
+        "",
+        "",
+        "@neatlogs.span(kind=\"TOOL\", tool_name=\"lookup_order\")"
+      ],
+      "score": 8.5
+    },
+    {
+      "repo": "gh/Sireadell/suture",
+      "path": "targets/clerk/app.py",
+      "line": 28,
+      "column": 39,
+      "context_before": [
+        "",
+        "@neatlogs.span(kind=\"TOOL\", tool_name=\"lookup_order\")",
+        "def lookup_order(order_id):"
+      ],
+      "context_line": "    return ORDERS.get(order_id, ORDERS[DEFAULT_ORDER])",
+      "context_after": [
+        "",
+        "",
+        "@neatlogs.span(kind=\"TOOL\", tool_name=\"write_answer\")"
+      ],
+      "score": 3.5
+    },
+    {
+      "repo": "gh/Sireadell/suture",
+      "path": "targets/clerk/app.py",
+      "line": 47,
+      "column": 36,
+      "context_before": [
+        "        data = json.loads(raw_body)",
+        "    except Exception:",
+        "        data = {}"
+      ],
+      "context_line": "    order_id = data.get(\"order_id\", DEFAULT_ORDER)",
+      "context_after": [
+        "    question = data.get(\"question\", \"\")",
+        "    order = lookup_order(order_id)",
+        "    return {\"order_id\": order_id, \"answer\": write_answer(order, question)}"
+      ],
+      "score": 3.5
+    }
+  ],
+  "total": 3,
+  "stats": {
+    "total_matches": 3,
+    "total_files": 1,
+    "duration_ms": 7,
+    "repos_searched": 1
+  },
+  "repo_stats": [
+    {
+      "repo": "gh/Sireadell/suture",
+      "match_count": 3,
+      "file_count": 1
+    }
+  ]
+}
+[exit 0]

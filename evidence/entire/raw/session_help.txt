@@ -1,0 +1,48 @@
+$ entire session --help
+View and manage agent sessions tracked by Entire.
+
+Commands:
+  list     List all sessions across all worktrees
+  info     Show detailed information for a specific session
+  tokens   Show token usage and optimization recommendations
+  stop     Stop one or more active sessions
+  current  Show the active session for the current worktree
+  attach   Attach an existing agent session
+  adopt    Adopt an active session from another worktree
+  resume   Switch to a branch and resume its session
+
+Examples:
+  entire session list                      List all sessions
+  entire session info <session-id>         Show session details
+  entire session info <session-id> --json  Output as JSON
+  entire session tokens <session-id>       Show token usage
+  entire session stop                      Interactive stop
+  entire session current                   Active session for cwd
+  entire session attach <session-id>       Attach an external session
+  entire session adopt <session-id> --from ../repo  Adopt a moved session
+  entire session resume <branch>           Resume from a branch
+
+Usage:
+  entire session [command]
+
+Aliases:
+  session, sessions
+
+Available Commands:
+  adopt       Adopt an active session from another worktree
+  attach      Attach an existing agent session
+  current     Show the session running this command, or the most recent one here
+  info        Show detailed session information
+  list        List all sessions
+  resume      Resume a stopped session (interactive picker, or by branch)
+  stop        Stop one or more active sessions
+  tokens      Show token usage and optimization recommendations for a session
+
+Flags:
+  -h, --help   help for session
+
+Global Flags:
+      --context name   Act as this saved login name for this command only — including the git and agent processes it spawns — instead of the active context (entire auth contexts lists them)
+
+Use "entire session [command] --help" for more information about a command.
+[exit 0]

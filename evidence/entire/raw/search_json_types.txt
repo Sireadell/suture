@@ -1,0 +1,7 @@
+$ bash -c entire search "DEFAULT_ORDER unknown order id" 2>&1 | grep -E "\"type\"|commitSubject|sessionId|checkpointId|\"prompt|summary" | head -30
+      "type": "commit",
+        "commitSubject": "Clerk: say the order was not found instead of answering with order A1001",
+      "type": "session",
+        "sessionId": "51a6ab9f-ea4e-4632-82d8-7a87f1fac0b7",
+        "prompt": "Background (from the session that started this one):",
+[exit 0]

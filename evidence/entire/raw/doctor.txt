@@ -1,0 +1,7 @@
+$ entire doctor
+✓ Metadata branches: OK (no remote-tracking metadata ref found)
+
+✓ Git hooks: OK
+✓ Claude Code hook config: OK
+No stuck sessions found.
+[exit 0]

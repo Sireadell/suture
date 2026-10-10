@@ -1,0 +1,23 @@
+$ entire session list
+── Sessions ────────────────────────────────────────────────
+
+Claude Code · suture · session 8d0f12e7-0f3e-42d3-a486-1efdffabeaf9
+> "Background (from the session that started this one): neat..."
+active · started 4m ago
+
+Claude Code · suture · session 03274a7b-2845-45cf-9b65-64ca88e23157
+> "Background (from the session that started this one): neat..."
+active · started 4m ago
+
+Claude Code · claude-sonnet-5-5 · suture · session 51a6ab9f-ea4e-4632-82d8-7a87f1fac0b7 · checkpoint 01M4K70B7PHXAKFTC5KK8NGABZ
+> "<cross-session-message from="local_fef4abba-ced1-4858-aca..."
+idle · started 1h ago · active 1h ago
+
+Claude Code · claude-sonnet-5-5 · (unknown) · session fef4abba-ced1-4858-aca2-bdb3f1d8d5a8 · checkpoint 01M4JN47KTJYS3FCWM29CD5MD7
+> "which of my hackathon needs some of the free tools i got...."
+ended · started 6h ago · tokens 29213.7k
+
+────────────────────────────────────────────────────────────
+4 sessions
+
+[exit 0]
