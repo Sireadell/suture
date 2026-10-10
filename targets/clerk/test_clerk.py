@@ -26,3 +26,17 @@ def test_ineligible_refund_is_reported():
 def test_order_question_names_the_item():
     out = ask("A1002", "What did I buy?")
     assert "Backpack" in out["answer"]
+
+
+def test_exact_answers_for_all_valid_orders():
+    assert ask("A1001", "Where is my refund?")["answer"] == (
+        "Your refund of $42.50 for the Desk lamp is approved and arrives in 3 business days."
+    )
+    assert ask("A1002", "refund?")["answer"] == "Your refund for the Backpack is pending review."
+    assert ask("A1003", "money back please")["answer"] == (
+        "Your refund for the Headphones is not eligible, past 30 days."
+    )
+
+
+def test_order_id_is_echoed_back():
+    assert ask("A1003", "What did I buy?")["order_id"] == "A1003"

@@ -1,6 +1,7 @@
 """The repair loop: prove the failure, ask the model for a fix, test it, put it online,
 re-prove it with an outside signed check, and only then offer a pull request."""
 import json
+import os
 import re
 import subprocess
 import sys
@@ -8,9 +9,10 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+import neatlogs
 import requests
 
-from . import config, llm, stressproof, tracing
+from . import config, llm, neatlogs_cli, stressproof, tracing
 
 ROOT = config.ROOT
 WORK = ROOT / "work" / "repo"
@@ -58,26 +60,94 @@ def wait_for_deploy(commit: str, timeout: int = 600) -> None:
 
 
 def run_tests() -> tuple[bool, str]:
+    env = {**os.environ, "NEATLOGS_API_KEY": ""}  # keep test runs out of the target's real traces
     out = subprocess.run(
-        [sys.executable, "-m", "pytest", "-q", "test_clerk.py"],
-        cwd=WORK / TARGET_DIR, capture_output=True, text=True,
+        [sys.executable, "-m", "pytest", "-q"],
+        cwd=WORK / TARGET_DIR, capture_output=True, text=True, env=env,
     )
     return out.returncode == 0, (out.stdout + out.stderr)[-1500:]
 
 
-def build_prompt(source: str, tests: str, failures: list[dict], feedback: str) -> str:
-    lines = "\n".join(f"- {p['probe']}: {p['outcome']} ({p['reason']})" for p in failures)
+def build_prompt(source: str, tests: str, evidence: list[dict], feedback: str) -> str:
+    lines = "\n".join(
+        f"- trace {e['trace_id']}: request body {e['raw_body']!r} was answered with {e['answer']}"
+        for e in evidence
+    )
     return (
-        "You are fixing a small Python web service. An outside tester (StressProof) sent it bad\n"
-        f"requests and found these problems:\n{lines}\n\n"
+        "You are fixing a small Python web service. Its traces in neatlogs show requests whose body is\n"
+        "not valid JSON, yet the service answered them normally with HTTP 200 and made up an answer:\n"
+        f"{lines}\n\n"
         "Meaning: the service must refuse bad input clearly (an HTTP 4xx status with a JSON error\n"
-        "message), never answer a bad request with HTTP 200, and keep working normally for valid\n"
-        "requests. Keep the same file layout, port handling and tracing setup. Do not add packages.\n"
+        "message), never answer a bad request with HTTP 200, and keep answering valid requests exactly\n"
+        "as before (valid orders A1001, A1002, A1003 must still get their correct answers).\n"
+        "Keep the same file layout, port handling and tracing setup. Do not add packages.\n"
         "The existing tests must keep passing.\n\n"
         f"Current file {SOURCE}:\n{FENCE}python\n{source}\n{FENCE}\n\n"
         f"Its tests:\n{FENCE}python\n{tests}\n{FENCE}\n{feedback}\n"
         f"Reply with the COMPLETE replacement for app.py in a single {FENCE}python code block, "
         "and nothing else."
+    )
+
+
+REGRESSION_TEMPLATE = '''"""Written by Suture from real failing traces in neatlogs. Bad bodies must be refused
+with a 4xx and a JSON error, and valid orders must still get their correct answers."""
+import json
+import threading
+import urllib.error
+import urllib.request
+from http.server import ThreadingHTTPServer
+
+import pytest
+
+import app
+
+BAD_BODIES = {bad}
+VALID = {{
+    "A1001": ("Where is my refund?", ["approved", "$42.50"]),
+    "A1002": ("Do I get my money back?", ["pending review"]),
+    "A1003": ("refund please", ["not eligible"]),
+}}
+
+
+@pytest.fixture(scope="module")
+def base():
+    server = ThreadingHTTPServer(("127.0.0.1", 0), app.Handler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{{server.server_port}}"
+    server.shutdown()
+
+
+def post(base, body):
+    req = urllib.request.Request(base, data=body.encode(), method="POST")
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return resp.status, resp.read().decode()
+    except urllib.error.HTTPError as err:
+        return err.code, err.read().decode()
+
+
+@pytest.mark.parametrize("body", BAD_BODIES)
+def test_bad_body_is_refused(base, body):
+    status, text = post(base, body)
+    assert 400 <= status < 500
+    assert "error" in json.loads(text)
+
+
+@pytest.mark.parametrize("order_id", sorted(VALID))
+def test_valid_order_is_still_answered(base, order_id):
+    question, words = VALID[order_id]
+    status, text = post(base, json.dumps({{"order_id": order_id, "question": question}}))
+    assert status == 200
+    answer = json.loads(text)["answer"]
+    for word in words:
+        assert word in answer
+'''
+
+
+def write_regression_tests(evidence: list[dict]) -> None:
+    bodies = sorted({e["raw_body"] for e in evidence} | {"{garbage", "", "[1, 2"})
+    (WORK / TARGET_DIR / "test_regression.py").write_text(
+        REGRESSION_TEMPLATE.format(bad=repr(bodies)), encoding="utf-8"
     )
 
 
@@ -91,47 +161,35 @@ def write_scorecard(card: dict) -> None:
     (EVIDENCE / "scorecard.json").write_text(json.dumps(card, indent=2) + "\n", encoding="utf-8")
 
 
-def main() -> None:
-    started = time.time()
-    baseline = stressproof.parse(json.loads(BASELINE.read_text(encoding="utf-8-sig")))
-    failures = stressproof.failed_probes(baseline)
-    card = {
-        "target": "https://suture-clerk.onrender.com",
-        "model": llm.MODEL,
-        "before_score": baseline["score"],
-        "before_silent_wrong": baseline["silentWrongCount"],
-        "before_link": baseline["permanentUrl"],
-        "after_score": None,
-        "after_silent_wrong": None,
-        "after_link": None,
-        "accepted": False,
-        "attempts_used": 0,
-        "stressproof_runs_used": 0,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "seconds": 0,
-        "attempt_log": [],
-    }
-
-    def snapshot() -> None:
-        card["input_tokens"] = llm.USAGE["input_tokens"]
-        card["output_tokens"] = llm.USAGE["output_tokens"]
-        card["seconds"] = round(time.time() - started)
-        write_scorecard(card)
+@neatlogs.span(kind="WORKFLOW", name="suture_run")
+def repair(card: dict, snapshot) -> None:
+    raw_before = json.loads(BASELINE.read_text(encoding="utf-8-sig"))
+    baseline = stressproof.parse(raw_before)
+    evidence = neatlogs_cli.failing_traces("clerk", raw_before["certificate"]["timestamp"])
+    if not evidence:
+        raise RuntimeError("no failing traces found in neatlogs for the before run")
+    card["failing_trace_ids"] = [e["trace_id"] for e in evidence]
 
     git("fetch", "origin", "main")
     git("reset", "--hard", "origin/main")
     original = (WORK / SOURCE).read_text(encoding="utf-8")
     tests = (WORK / TESTS).read_text(encoding="utf-8")
+
+    # The new tests must fail on today's Clerk, otherwise they prove nothing.
+    write_regression_tests(evidence)
+    reproduced, _ = run_tests()
+    card["regression_test_fails_on_original"] = not reproduced
+    snapshot()
     feedback = ""
     best = None
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
         card["attempts_used"] = attempt
-        entry = {"attempt": attempt}
+        entry = {"attempt": attempt, "fix_source": f"model {llm.MODEL}", "trace_ids_used": card["failing_trace_ids"]}
         card["attempt_log"].append(entry)
         git("reset", "--hard", "origin/main")
-        reply = llm.ask(build_prompt(original, tests, failures, feedback))
+        write_regression_tests(evidence)
+        reply = llm.ask(build_prompt(original, tests, evidence, feedback))
         (WORK / SOURCE).write_text(extract_code(reply), encoding="utf-8")
 
         ok, output = run_tests()
@@ -142,7 +200,7 @@ def main() -> None:
             snapshot()
             continue
 
-        git("add", SOURCE)
+        git("add", SOURCE, f"{TARGET_DIR}/test_regression.py")
         git("commit", "-m", "Reject bad requests with a clear error instead of answering 200")
         git("push", "--force", "origin", f"HEAD:{CANDIDATE_BRANCH}")
         sha = git("rev-parse", "HEAD")
@@ -159,11 +217,10 @@ def main() -> None:
             best = result
             break
         entry["result"] = "rejected: score did not rise or quiet failures remain"
-        remaining = stressproof.failed_probes(result)
         feedback = (
             f"\nYour last attempt scored {result['score']} (was {baseline['score']}) with "
             f"{result['silentWrongCount']} quiet failures. Remaining problems: "
-            + "; ".join(f"{p['probe']} {p['outcome']}" for p in remaining) + "\n"
+            + "; ".join(f"{p['probe']} {p['outcome']}" for p in stressproof.failed_probes(result)) + "\n"
         )
         snapshot()
 
@@ -178,12 +235,44 @@ def main() -> None:
         card["pull_request_branch"] = branch
     else:
         git("reset", "--hard", "origin/main")
+
+
+def main() -> None:
+    started = time.time()
+    baseline = stressproof.parse(json.loads(BASELINE.read_text(encoding="utf-8-sig")))
+    card = {
+        "target": "https://suture-clerk.onrender.com",
+        "model": llm.MODEL,
+        "failures_found_with": "neatlogs traces (CLI); StressProof used only for the signed before and after proof",
+        "neatlogs_fixes": "not used: the neatlogs CLI has no Fixes command",
+        "neatlogs_verdict_writeback": "not done: the CLI login is read-only (project:read)",
+        "before_score": baseline["score"],
+        "before_silent_wrong": baseline["silentWrongCount"],
+        "before_link": baseline["permanentUrl"],
+        "after_score": None,
+        "after_silent_wrong": None,
+        "after_link": None,
+        "accepted": False,
+        "attempts_used": 0,
+        "stressproof_runs_used": 0,
+        "attempt_log": [],
+    }
+
+    def snapshot() -> None:
+        card["seconds"] = round(time.time() - started)
+        card["own_counters_crosscheck"] = dict(llm.USAGE)
+        write_scorecard(card)
+
+    try:
+        repair(card, snapshot)
+    finally:
+        tracing.stop()
     snapshot()
+    time.sleep(20)  # let neatlogs finish ingesting this run before reading its cost back
+    card["neatlogs_cost"] = neatlogs_cli.run_cost("suture", started)
+    write_scorecard(card)
     print(json.dumps({k: v for k, v in card.items() if k != "attempt_log"}, indent=2))
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    finally:
-        tracing.stop()
+    main()

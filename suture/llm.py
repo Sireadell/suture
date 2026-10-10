@@ -14,7 +14,7 @@ from google import genai  # noqa: E402  (must come after tracing.start)
 _client = neatlogs.wrap(genai.Client(api_key=config.get("GEMINI_API_KEY")))
 
 
-USAGE = {"input_tokens": 0, "output_tokens": 0, "calls": 0}
+USAGE = {"input_tokens": 0, "output_tokens": 0, "thought_tokens": 0, "calls": 0}
 
 
 def ask(prompt: str) -> str:
@@ -30,8 +30,7 @@ def ask(prompt: str) -> str:
     meta = getattr(response, "usage_metadata", None)
     if meta:
         USAGE["input_tokens"] += getattr(meta, "prompt_token_count", 0) or 0
-        USAGE["output_tokens"] += (getattr(meta, "candidates_token_count", 0) or 0) + (
-            getattr(meta, "thoughts_token_count", 0) or 0
-        )
+        USAGE["output_tokens"] += getattr(meta, "candidates_token_count", 0) or 0
+        USAGE["thought_tokens"] += getattr(meta, "thoughts_token_count", 0) or 0
     USAGE["calls"] += 1
     return response.text or ""
