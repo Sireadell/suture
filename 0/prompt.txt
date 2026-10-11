@@ -113,3 +113,37 @@ push it
 <status>failed</status>
 <summary>Background command "Rebase on origin/main and push Ward evidence" failed with exit code 128</summary>
 </task-notification>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Founder wants Entire visibly used on Ward's fix. Please, from your tracked session, in a fresh worktree off origin/main (ee2b3ee or later): make ONE small genuine improvement to targets/ward/app.py in the 400 path, namely include a machine-readable "code" in the 400 body ("request_unreadable" for bad JSON, "patient_id_missing" for no id) while keeping the existing "error" text, and add tests for both in targets/ward/test_ward.py. Run test_ward.py (all must pass). Do not change any other behaviour (404, success body, probes must behave the same). Commit locally with a plain message ("Ward: add an error code to 400 replies"), no mention of process. Confirm the commit gets an Entire-Checkpoint trailer, then run `entire why targets/ward/app.py:<line>` on one of the new lines and save the raw output to C:\Users\DELL\suture-ward\evidence\entire\ward\why_code_line.txt. Do NOT push. Report commit id, file list, test result, and the why output in one short table. I will get founder approval to push and then re-run StressProof on the live Ward.
+</cross-session-message>
+
+---
+
+<task-notification>
+<task-id>bonhhwne3</task-id>
+<tool-use-id>toolu_0116V6NWRTypXa8REqS1M931</tool-use-id>
+<output-file>C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\tasks\bonhhwne3.output</output-file>
+<status>failed</status>
+<summary>Background command "Run Ward tests with neatlogs in a temp folder" failed with exit code 2</summary>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b0xqo8fvm</task-id>
+<tool-use-id>toolu_014ZpdwokZC9DfmvV3NQBi2r</tool-use-id>
+<output-file>C:\Users\DELL\AppData\Local\Temp\claude\C--Users-DELL-suture\03274a7b-2845-45cf-9b65-64ca88e23157\tasks\b0xqo8fvm.output</output-file>
+<status>completed</status>
+<summary>Monitor "Wait for Ward test run to finish" stream ended</summary>
+<event>import neatlogs
+E   ModuleNotFoundError: No module named 'neatlogs'
+=========================== short test summary info ===========================
+ERROR test_ward.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.32s
+[exited with code 2]</event>
+If this event is something the user would act on now, send a PushNotification. Routine or benign output doesn't need one.
+</task-notification>
