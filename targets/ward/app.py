@@ -44,15 +44,21 @@ def write_answer(patient_id, patient):
     return f"{patient['label']} ({patient_id}) takes: {names}."
 
 
+class BadRequest(ValueError):
+    def __init__(self, message, code):
+        super().__init__(message)
+        self.code = code
+
+
 @neatlogs.span(kind="WORKFLOW")
 def handle(raw_body):
     try:
         data = json.loads(raw_body)
     except Exception:
-        raise ValueError("request body is not readable JSON")
+        raise BadRequest("request body is not readable JSON", "request_unreadable")
     patient_id = data.get("patient_id") if isinstance(data, dict) else None
     if not isinstance(patient_id, str) or not patient_id:
-        raise ValueError("request body has no patient_id")
+        raise BadRequest("request body has no patient_id", "patient_id_missing")
     patient = lookup_medications(patient_id)
     if patient is None:
         raise LookupError(f"unknown patient {patient_id!r}")
@@ -82,7 +88,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             self._send(200, handle(raw))
         except ValueError as err:
-            self._send(400, {"error": str(err)})
+            self._send(400, {"error": str(err), "code": err.code})
         except LookupError as err:
             self._send(404, {"error": str(err)})
 

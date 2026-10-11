@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from app import handle
+from app import BadRequest, handle
 
 
 def ask(patient_id):
@@ -34,3 +34,17 @@ def test_unreadable_or_idless_body_is_refused_not_answered(body):
     ask("P-1003")
     with pytest.raises(ValueError):
         handle(body)
+
+
+@pytest.mark.parametrize("body", ['{"patient_id":"P-1001"', "", "not json"])
+def test_unreadable_body_has_a_code(body):
+    with pytest.raises(BadRequest) as err:
+        handle(body)
+    assert err.value.code == "request_unreadable"
+
+
+@pytest.mark.parametrize("body", ["[]", '{"name":"x"}', '{"patient_id":["P-1001"]}'])
+def test_body_without_an_id_has_a_code(body):
+    with pytest.raises(BadRequest) as err:
+        handle(body)
+    assert err.value.code == "patient_id_missing"
