@@ -167,3 +167,9 @@ try again
 <cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
 Retry (your last turn died on a network error). Ward is proven. Before 88 PARTIAL, 1 quiet wrong; after 100 RESILIENT, 0 quiet. neatlogs flagged 30 Ward traces (incl. 78e36935e382072a0c9fc9cd36b06ee2), its Investigate chat https://app.neatlogs.com/ai-search/53fcf458-64b7-4a29-927e-0c9873df9188 raised a CRITICAL incident and wrote the fix (drop last-patient fallback, 400 on unreadable). Fix pushed as 3eff18f. No sent-back round for Ward (fix 1 passed first time), say so honestly. Files in C:\Users\DELL\suture-ward\evidence\ward\ (before_ward_v1.json, after_ward_v1.json with permanentUrl, neatlogs_incident_text.md). Please: fill SCRIPT_v4_ward.md with these numbers, capture read-only stills (neatlogs trace, detection, incident, chat; signed-report zoom for 88 and 100) using a fresh browser tab (neatlogs freezes long-lived tabs), no final voice. Send me the script for founder approval.
 </cross-session-message>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Founder approved SCRIPT_v4_ward.md as written (nothing changed). Go ahead: make the final voice (en-US-AndrewNeural per the skill), build the captioned cut, check duration (target 2:40, cap 3:00), sample frames, and send me the file path. Keep the not-claimed list as is. Detection line stays out unless the neatlogs Detections page loads in a fresh tab (then you may add one short sentence with a still). Entire part stays Clerk-labelled for now; I will tell you if a Ward Entire still appears. Do not publish or post anything.
+</cross-session-message>
