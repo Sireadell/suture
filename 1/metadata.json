@@ -1,0 +1,196 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4PEB9YE39CEQR5F02C1P9ZA",
+  "session_id": "35019a1a-6fbf-4699-9e76-08126754677b",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-11T21:36:53.9966999Z",
+  "branch": "site-page",
+  "checkpoints_count": 3,
+  "save_step_count": 12,
+  "files_touched": [
+    "docs/data.json",
+    "docs/index.html"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "bf9915a99dc5",
+  "checkpoint_transcript_start": 1341,
+  "transcript_lines_at_start": 1341,
+  "compact_transcript_start": 171,
+  "token_usage": {
+    "input_tokens": 82,
+    "cache_creation_tokens": 47599,
+    "cache_read_tokens": 9892594,
+    "output_tokens": 27438,
+    "api_call_count": 41
+  },
+  "session_metrics": {
+    "turn_count": 26
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-11T21:36:53.3782047Z",
+    "agent_lines": 343,
+    "agent_removed": 106,
+    "human_added": 0,
+    "human_modified": 4,
+    "human_removed": 0,
+    "total_committed": 347,
+    "total_lines_changed": 453,
+    "agent_percentage": 99.11699779249447,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 860,
+      "user_lines_removed": 472,
+      "agent_lines_added": 1,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "suture/loop.py": 554,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      },
+      "user_removed_per_file": {
+        "suture/loop.py": 472
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 555,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 555,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 555,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 308,
+      "user_lines_removed": 3,
+      "agent_lines_added": 555,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "suture/loop.py": 2,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      },
+      "user_removed_per_file": {
+        "suture/loop.py": 3
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 554,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 554,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 554,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 10,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 554,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 11,
+      "user_lines_added": 309,
+      "user_lines_removed": 0,
+      "agent_lines_added": 554,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "evidence/cfo/CFO_PLAN.md": 3,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    },
+    {
+      "checkpoint_number": 12,
+      "user_lines_added": 306,
+      "user_lines_removed": 0,
+      "agent_lines_added": 557,
+      "agent_lines_removed": 472,
+      "user_added_per_file": {
+        ".codex/hooks.json": 171,
+        "targets/ward/app.py": 105,
+        "targets/ward/requirements.txt": 1,
+        "targets/ward/test_ward.py": 29
+      }
+    }
+  ]
+}
