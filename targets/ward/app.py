@@ -31,7 +31,6 @@ PATIENTS = {
         {"name": "Omeprazole", "dose": "20 mg before breakfast"},
     ]},
 }
-LAST_PATIENT = {"id": "P-1001"}  # the patient the assistant was last asked about
 
 
 @neatlogs.span(kind="TOOL", tool_name="lookup_medications")
@@ -50,14 +49,13 @@ def handle(raw_body):
     try:
         data = json.loads(raw_body)
     except Exception:
-        data = {}
-    if not isinstance(data, dict):
-        data = {}
-    patient_id = data.get("patient_id", LAST_PATIENT["id"])
+        raise ValueError("request body is not readable JSON")
+    patient_id = data.get("patient_id") if isinstance(data, dict) else None
+    if not isinstance(patient_id, str) or not patient_id:
+        raise ValueError("request body has no patient_id")
     patient = lookup_medications(patient_id)
     if patient is None:
         raise LookupError(f"unknown patient {patient_id!r}")
-    LAST_PATIENT["id"] = patient_id
     return {
         "patient_id": patient_id,
         "medications": patient["medications"],
@@ -83,6 +81,8 @@ class Handler(BaseHTTPRequestHandler):
         raw = self.rfile.read(length).decode("utf-8", errors="replace")
         try:
             self._send(200, handle(raw))
+        except ValueError as err:
+            self._send(400, {"error": str(err)})
         except LookupError as err:
             self._send(404, {"error": str(err)})
 
