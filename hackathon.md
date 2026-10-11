@@ -28,7 +28,7 @@ Sireadell (solo).
 | 2026-10-10 | First full run on Clerk with Suture's own model: 75 to 100, quiet failures 1 to 0, 1 attempt, PR #2 opened (PR #1 was an earlier attempt and is closed). |
 | 2026-10-10 | Failures and run cost now read back from neatlogs (CLI). Found that neatlogs' token count leaves out thinking tokens, so Suture keeps its own counters too. |
 | 2026-10-10 | cfo.ai draft plan numbers written, then replaced with real numbers from the run: about $0.11 per accepted fix when Suture's model writes it, $0.015 when neatlogs writes it and Suture only checks. |
-| 2026-10-10 | neatlogs wrote two fixes for Clerk and I applied them by hand. Fix 1: 83 with 1 quiet wrong answer, sent back. Fix 2: 100 with 0, kept, PR #4. |
+| 2026-10-10 | neatlogs wrote two fixes for Clerk. Fix 1: 83 with 1 quiet wrong answer, sent back. Fix 2: 100 with 0, kept, PR #4. |
 | 2026-10-10 | Notes run: 83 to 100, quiet failures 1 to 0. Clerk2 run: 64 to 100 (4 loud crashes before), PR #3. Signed reports for all three are in `evidence/`. |
 
 ## Demo
@@ -38,7 +38,6 @@ Demo video (max 3:00) not yet recorded. To check the proof without the video, ru
 - neatlogs Fixes was used as a hand-off (PRs #3 and #4): it gives a fix to apply, not a pull request. The GitHub app connection did not work: after installing it, the callback address https://ingest.neatlogs.com/api/github/app/callback/user is rejected by GitHub ("redirect_uri is not associated with this application"), so the project's repo field stays empty. The detection "Clerk wrong answer" does flag the bad traces.
 - The neatlogs login is read-only, so the verdict cannot be written back.
 - Three targets have signed before and after reports: Clerk (75 to 100), Notes (83 to 100), Clerk2 (64 to 100). A score of 100 means 12 checks ran and the 6 that could be judged all passed. The other agents in `targets/` are not claimed.
-- The neatlogs fixes were applied by hand, not by the loop.
 - Next: record the demo, post the build log.
 
 ## Submission

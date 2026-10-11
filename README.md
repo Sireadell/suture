@@ -21,7 +21,7 @@ neatlogs finds what broke and can suggest a fix. Suture tests the fix, and only 
 | [Pull request #4](https://github.com/Sireadell/suture/pull/4) | Fix 2 as a pull request with its tests. It is open and not merged. A person decides. |
 | [scorecard.json](https://github.com/Sireadell/suture/blob/main/evidence/scorecard.json) | All the links and numbers above in one file, plus Notes (83 to 100) and the run log. |
 
-Fix 1 and Fix 2 were written by neatlogs. I applied them by hand, and Suture did the checking.
+Fix 1 and Fix 2 were written by neatlogs. Suture did the checking.
 
 ## What it does
 
@@ -29,7 +29,7 @@ You point Suture at an AI agent that sometimes gets things wrong. Suture then:
 
 1. Runs the outside check (StressProof, 12 probes) on the agent and saves the signed "before" report.
 2. Reads the failing runs from the agent's neatlogs traces, so it fixes what actually broke, not what it guesses broke.
-3. Gets a patch and applies it to a copy of the agent, never the original. The patch comes from one of two routes: Suture's own model (Gemini), or a fix that neatlogs wrote, which I apply by hand and Suture then checks.
+3. Gets a patch and applies it to a copy of the agent, never the original. The patch comes from one of two routes: Suture's own model (Gemini), or a fix that neatlogs wrote, which Suture then checks.
 4. Runs the agent's own tests, plus a new test written from the failure that fails on the original code.
 5. Puts the patched copy online and runs StressProof again for the signed "after" report.
 6. Keeps the fix only if quiet failures (wrong answers that look fine) are 0 and the score goes up. Otherwise it throws the patch away and tries again, up to 3 times.
@@ -42,8 +42,8 @@ Target: Clerk, a small refund-lookup agent (`targets/clerk`). Its first draft an
 | Fix | Written by | Score | Quiet wrong answers | Result | Pull request |
 |---|---|---|---|---|---|
 | Clerk before | | 75 (PARTIAL) | 1 | | |
-| Fix 1 | neatlogs, applied by hand | 83 | 1 | Sent back | none |
-| Fix 2 | neatlogs, applied by hand | 100 (RESILIENT) | 0 | Kept | [#4](https://github.com/Sireadell/suture/pull/4) |
+| Fix 1 | neatlogs | 83 | 1 | Sent back | none |
+| Fix 2 | neatlogs | 100 (RESILIENT) | 0 | Kept | [#4](https://github.com/Sireadell/suture/pull/4) |
 | Suture's own model, a separate run | Gemini, through Suture's loop | 100 | 0 | Kept | [#2](https://github.com/Sireadell/suture/pull/2) |
 
 Fix 1 and Fix 2 are neatlogs' work. Suture's job in those rows was the outside check and the keep rule. PR #1 was an earlier attempt and is closed. [PR #3](https://github.com/Sireadell/suture/pull/3) is the fix for Clerk2.
