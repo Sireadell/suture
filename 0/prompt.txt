@@ -93,3 +93,9 @@ Have the audit session commit again from a tracked session
 <cross-session-message from="local_6a6c3b7d-3551-4d38-8a2c-477b01ee864b" name="neatlogs use: audit and improve">
 Stopping at step 1: `entire status` in C:\Users\DELL\suture-ward lists 2 active sessions (35019a1a-6fbf-4699-9e76-08126754677b and 03274a7b-2845-45cf-9b65-64ca88e23157). This session's id is d37a5e63-7ec1-4e0a-91e6-ec1b8c4ef3da and it is NOT listed. My local Ward commit 139790e has no Entire-Checkpoint line either (only d783eeb has one). I am not pushing anything to main: the push needs my parent's approval, which I do not have.
 </cross-session-message>
+
+---
+
+<cross-session-message from="local_fef4abba-ced1-4858-aca2-bdb3f1d8d5a8" name="neathack 10-12 oct">
+Founder chose option A. The audit session's session is not tracked by Entire, so do not rely on it. You are tracked: please make the commit yourself. In a fresh clone or worktree off origin/main (3eff18f), add the Ward evidence files from C:\Users\DELL\suture-ward\evidence\ward\ (before_ward_v1.json, after_ward_v1.json, neatlogs_incident_text.md) under evidence/ward/, commit with a plain message such as "Add Ward before and after reports and neatlogs incident text" (no mention of drafts or AI, no co-author lines about process). Do NOT push. Confirm the commit gets an Entire-Checkpoint trailer, then send me the file list and commit id. I will get the founder's push approval. Tell the audit session to stand down on this.
+</cross-session-message>
