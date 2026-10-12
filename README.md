@@ -1,5 +1,9 @@
 # Suture
 
+In 2013, at UCSF, a 16-year-old patient was given 38 and a half tablets of an antibiotic instead of one. He had a seizure and stopped breathing. The medical team responded, and he survived. It is a serious reminder that mistakes in digital systems can have real consequences, and that a system can look like it is working and still get something critically wrong.
+
+That is what inspired me to build Suture. My plans go beyond AI agents. I want to adapt this approach for hospital systems, where a quiet wrong answer can hurt a patient. That is a plan, not something Suture does today, and I am not claiming it would have prevented that case.
+
 An agent that fixes broken agents, and only hands the fix over once an outside check shows it worked.
 
 Built for neatHack, track "Build an agent that works (literally)".
@@ -77,7 +81,7 @@ Or skip the setup and run `pip install requests` then `python verify.py`. It fet
 entire checkpoint list
 ```
 
-When I ran it on `main` on 2026-10-11 it showed 21. That number grows as I keep working, so run it yourself. Limit: the first draft of Clerk was written before Entire was recording in this folder, so `entire why` on those lines says no checkpoint is linked ([details](https://github.com/Sireadell/suture/blob/main/evidence/entire/WHERE_THE_BUG_CAME_FROM.md)).
+When I last ran it on `main` it showed 23. That number grows as I keep working, so run it yourself. Limit: the first draft of Clerk was written before Entire was recording in this folder, so `entire why` on those lines says no checkpoint is linked ([details](https://github.com/Sireadell/suture/blob/main/evidence/entire/WHERE_THE_BUG_CAME_FROM.md)).
 
 **cfo.ai.** The business plan for Suture: price per accepted fix, cost per fix, margin and runway. Notes and screenshots are in [evidence/cfo](https://github.com/Sireadell/suture/blob/main/evidence/cfo/CFO_PLAN.md). Two cost figures come out of the real run: $0.112866 per fix when Suture's own model writes the fix, and $0.015 when neatlogs writes the fix and Suture only checks it. Both are from one run, not an average. Limit: cfo.ai could not read my scorecard, so I typed the measured numbers into its chat.
 
